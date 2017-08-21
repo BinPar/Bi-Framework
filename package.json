@@ -2,6 +2,7 @@
   "name": "bi-framework",
   "version": "0.0.1",
   "description": "Framework para la creación de proyectos full stack JS isomórficos con GraphQL y React",
+  "author": "BinPar Team S.L:",
   "license": "MIT",
   "repository": "BinPar/Bi-Framework",
   "bugs": "https://github.com/BinPar/Bi-Framework/issues",

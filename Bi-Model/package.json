@@ -2,14 +2,17 @@
   "name": "bi-model",
   "version": "1.0.0",
   "description": "Bi-Model of the Bi-FrameWork",
-  "main": "index.js",
+  "main": ".compiled/src/index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=dev nodemon -e js,graphql,json --exec babel-node src/index.js"
+    "start": "node .compiled/src/index.js",
+    "dev": "cross-env NODE_ENV=dev nodemon -e js,graphql,json --exec babel-node src/index.js",
+    "compile": "rm -rf .compiled && babel src --out-dir .compiled/src"
   },
   "quokka": {
     "babel": true
   },
   "author": "BinPar Team S.L:",
+  "license": "MIT",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "cross-env": "^5.0.5",
