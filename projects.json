@@ -1,0 +1,20 @@
+[
+  {
+      "name": "Bi-Model",
+      "rootPath": "./Bi-Model",
+      "paths": [],
+      "group": ""
+  },
+  {
+    "name": "Bi-Back",
+    "rootPath": "./Bi-Back",
+    "paths": [],
+    "group": ""
+  },
+  {
+    "name": "Examples",
+    "rootPath": "./Examples",
+    "paths": [],
+    "group": ""
+  }
+]
