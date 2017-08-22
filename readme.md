@@ -2,10 +2,15 @@
 
 # TODOs
 
+## Parser
+
+- [ ] Parser
+
 ## Back end
 
 - [ ] Schema GraphQL
 - [ ] Mongoose model
+- [ ] Automatic fixtures generation
 - [ ] Basic GraphQL Resolvers
 - [ ] Permissions
 - [ ] Advanced logic (validations, methods, etc)
