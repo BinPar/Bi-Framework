@@ -1,9 +1,11 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
-import types from './types';
-import gender from './gender';
+import faker from 'faker';
+import moment from 'moment';
+import types from '../fieldTypes';
+import gender from '../enums/gender';
 
 export default {
-  collectionName: 'customers',
+  shortName: 'Customers',
   singularName: {
     es: 'cliente',
     en: 'customer',
@@ -22,6 +24,35 @@ export default {
         en: 'Phone',
       },
       type: types.phone,
+    },
+    firstContactAt: {
+      label: {
+        es: 'Primer contacto',
+        en: 'Fist contact',
+      },
+      type: types.dateTime,
+      maxValue: () => new Date(),
+      indexed: true,
+    },
+    lastContactAt: {
+      label: {
+        es: 'Próximo contacto',
+        en: 'Next contact',
+      },
+      type: types.dateTime,
+      minValue: doc => doc.firstContactAt,
+      maxValue: new Date(),
+      indexed: true,
+    },
+    nextContactAt: {
+      label: {
+        es: 'Próximo contacto',
+        en: 'Next contact',
+      },
+      type: types.dateTime,
+      minValue: () => new Date(),
+      maxValue: () => new Date(moment().add(6, 'months')),
+      indexed: true,
     },
     sexo: {
       label: {
@@ -104,16 +135,16 @@ export default {
         es: 'Mercado',
         en: 'Market',
       },
-      type: types.reference,
-      targetCollectionName: 'markets',
+      type: types.oneToManyReference,
+      targetCollectionShortName: 'Markets',
     },
     company: {
       label: {
         es: 'Empresa',
         en: 'Company',
       },
-      type: types.reference,
-      targetCollectionName: 'companies',
+      type: types.oneToManyReference,
+      targetCollectionShortName: 'Companies',
       targetCollectionSelect: col => col.find({ isClient: true }),
       denormalized: true,
     },
@@ -122,8 +153,8 @@ export default {
         es: 'Nacionalidad',
         en: 'Nationality',
       },
-      type: types.reference,
-      targetCollectionName: 'countries',
+      type: types.oneToManyReference,
+      targetCollectionShortName: 'Countries',
       denormalized: true,
       denormalizedFields: ['demonym'],
       targetCollectionSelect: col => col.sort({ demonym: 1 }),
@@ -133,8 +164,8 @@ export default {
         es: 'Habilidades',
         en: 'Skills',
       },
-      type: [types.reference],
-      targetCollectionName: 'skills',
+      type: [types.oneToManyReference],
+      targetCollectionShortName: 'Skills',
       denormalized: true,
       denormalizedFields: ['name', 'type'],
       validations: [
@@ -155,13 +186,14 @@ export default {
         display: ['admin', 'financial'],
         update: (doc, user) => user.can('admin') || doc.createdBy === user._id,
         remove: 'admin',
-        add: 'admin',
+        insert: 'admin',
       },
     },
     avatar: {
       label: 'Avatar',
       type: types.image,
       required: true,
+      getFakedValue: () => faker.name.avatar(),
       permissions: {
         display: (doc, user) => user.can('admin') || doc.createdBy === user._id,
         update: (doc, user) => user.can('admin') || doc.createdBy === user._id,
@@ -171,6 +203,7 @@ export default {
     },
     address: {
       type: types.object,
+      shortName: 'Address',
       label: {
         es: 'Dirección',
         en: 'Address',
@@ -182,8 +215,8 @@ export default {
             es: 'País',
             en: 'Country',
           },
-          type: types.reference,
-          targetCollectionName: 'countries',
+          type: types.oneToManyReference,
+          targetCollectionShortName: 'Countries',
           denormalized: true,
           denormalizedFields: ['name'],
           targetCollectionSelect: col => col.sort({ name: 1 }),
@@ -195,8 +228,8 @@ export default {
             es: 'Ciudad',
             en: 'City',
           },
-          type: types.reference,
-          targetCollectionName: 'cities',
+          type: types.oneToManyReference,
+          targetCollectionShortName: 'Cities',
           denormalized: true,
           denormalizedFields: ['name'],
           targetCollectionSelect: (col, doc) => col.filter({ 'country._id': doc.country._id }),
@@ -223,19 +256,19 @@ export default {
         en: 'Created by',
       },
       readOnly: true,
-      type: types.reference,
-      targetCollectionName: 'user',
+      type: types.oneToManyReference,
+      targetCollectionShortName: 'Users',
     },
   },
   permissions: {
     display: ['admin', 'financial', 'sales'],
     update: ['admin', 'financial', 'sales'],
     delete: (doc, user) => user.can(['admin', 'sales']) || doc.createdBy === user._id,
-    add: ['admin', 'sales'],
+    insert: ['admin', 'sales'],
   },
   hooks: {
-    onBeforeAdd: (doc, user) => ({ ...doc, createdBy: user._id }),
-    onAfterAdd: null,
+    onBeforeInsert: (doc, user) => ({ ...doc, createdBy: user._id }),
+    onAfterInsert: null,
     onBeforeUpdate: null,
     onAfterUpdate: null,
     onBeforeDelete: null,

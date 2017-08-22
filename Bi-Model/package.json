@@ -17,7 +17,11 @@
     "bcrypt-nodejs": "0.0.3",
     "cross-env": "^5.0.5",
     "express": "^4.15.3",
+    "faker": "^4.1.0",
     "fibers": "^2.0.0",
+    "moment": "^2.18.1",
+    "mongoose": "^4.11.7",
+    "mongoose-simple-random": "^0.4.1",
     "validator": "^8.0.0"
   },
   "devDependencies": {
