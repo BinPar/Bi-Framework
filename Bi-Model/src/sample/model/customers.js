@@ -1,8 +1,8 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
 import faker from 'faker';
 import moment from 'moment';
-import types from '../fieldTypes';
-import gender from '../enums/gender';
+import types from '../../fieldTypes';
+import gender from '../../enums/gender';
 
 export default {
   shortName: 'Customers',
@@ -276,5 +276,6 @@ export default {
     onSelect: (col, user) =>
       (user.can(['admin', 'financial']) ? col : col.filter({ createdBy: user._id })),
   },
+  totalFixtures: 100,
   defaultViews: [{}],
 };

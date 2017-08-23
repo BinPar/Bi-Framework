@@ -1,4 +1,6 @@
 import boolean from './boolean';
+import cityName from './cityName';
+import countryName from './countryName';
 import dateTime from './dateTime';
 import email from './email';
 import firstName from './firstName';
@@ -10,6 +12,8 @@ import phone from './phone';
 
 export default {
   boolean,
+  cityName,
+  countryName,
   dateTime,
   email,
   firstName,
