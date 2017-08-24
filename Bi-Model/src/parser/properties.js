@@ -16,7 +16,9 @@ export function check(expectedType, value, ...params) {
 
 export async function getValue(expectedType, value, currentLang, ...params) {
   const propertyType = toString.call(value);
-  if (propertyType === '[object AsyncFunction]' || propertyType === expectedType) {
+  if (propertyType === expectedType) {
+    return value; 
+  } else if (propertyType === '[object AsyncFunction]') {
     const result = await value(...params);
     return getValue(expectedType, result, ...params);
   } else if (propertyType === '[object Function]') {
