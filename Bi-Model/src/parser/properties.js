@@ -2,7 +2,7 @@ const toString = Object.prototype.toString;
 
 export function check(expectedType, value, ...params) {
   const propertyType = toString.call(value);
-  if (propertyType === '[object AsyncFunction]​​​​​' || propertyType === expectedType) {
+  if (propertyType === '[object AsyncFunction]' || propertyType === expectedType) {
     return true;
   } else if (propertyType === '[object Function]') {
     return check(expectedType, value(...params));

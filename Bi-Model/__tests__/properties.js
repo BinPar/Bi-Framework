@@ -33,4 +33,9 @@ describe('Property type verification', () => {
     expect(check('[object Array]', list => list.map(c => c), new Array(5))).toBe(true);
     expect(check('[object String]', () => ({ es: 'hola', en: 'hello' }))).toBe(true);
   });
+
+  test('promises', () => {
+    expect(check('[object String]', async () => '')).toBe(true);
+    expect(check('[object Date]', async () => '')).toBe(true);
+  });
 });
