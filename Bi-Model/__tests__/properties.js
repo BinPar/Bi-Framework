@@ -31,5 +31,6 @@ describe('Property type verification', () => {
     expect(check('[object Date]', () => Date)).toBe(false);
     expect(check('[object Number]', () => 12)).toBe(true);
     expect(check('[object Array]', list => list.map(c => c), new Array(5))).toBe(true);
+    expect(check('[object String]', () => ({ es: 'hola', en: 'hello' }))).toBe(true);
   });
 });
