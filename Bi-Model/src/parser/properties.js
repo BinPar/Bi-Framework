@@ -1,3 +1,5 @@
+import settings from '../config/settings.json';
+
 const toString = Object.prototype.toString;
 
 export function check(expectedType, value, ...params) {
@@ -12,10 +14,18 @@ export function check(expectedType, value, ...params) {
   return false;
 }
 
-export function getValue(value, ...params) {
+export async function getValue(expectedType, value, currentLang, ...params) {
   const propertyType = toString.call(value);
-  if (propertyType === '[object AsyncFunction]​​​​​' || propertyType === '[object Function]​​​​​') {
-    return value(...params);
+  if (propertyType === '[object AsyncFunction]' || propertyType === expectedType) {
+    const result = await value(...params);
+    return getValue(expectedType, result, ...params);
+  } else if (propertyType === '[object Function]') {
+    return getValue(expectedType, value(...params), ...params);
+  } else if (expectedType === '[object String]' && propertyType === '[object Object]') {
+    if (currentLang == null) {
+      return value[settings.defaultLanguage];
+    }
+    return value[currentLang] || value[settings.defaultLanguage];
   }
-  return value;
+  return false;
 }
