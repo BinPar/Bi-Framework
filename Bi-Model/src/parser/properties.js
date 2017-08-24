@@ -5,8 +5,9 @@ export function check(expectedType, value, ...params) {
   if (propertyType === '[object AsyncFunction]​​​​​' || propertyType === expectedType) {
     return true;
   } else if (propertyType === '[object Function]') {
-    const returnType = toString.call(value(...params));
-    return returnType === '​​​​​[object AsyncFunction]​​​​​' || returnType === expectedType;
+    return check(expectedType, value(...params));
+  } else if (expectedType === '[object String]' && propertyType === '[object Object]') {
+    return Object.keys(value).filter(key => key.length !== 2).length === 0;
   }
   return false;
 }
