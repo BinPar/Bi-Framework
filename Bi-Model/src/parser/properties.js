@@ -2,13 +2,18 @@ import settings from '../config/settings.json';
 
 const toString = Object.prototype.toString;
 
+export function stringifyNativeType(type) {
+  return type;
+}
+
 export function check(expectedType, value, ...params) {
+  const strExpectedType = stringifyNativeType(expectedType);
   const propertyType = toString.call(value);
-  if (propertyType === '[object AsyncFunction]' || propertyType === expectedType) {
+  if (propertyType === '[object AsyncFunction]' || propertyType === strExpectedType) {
     return true;
   } else if (propertyType === '[object Function]') {
-    return check(expectedType, value(...params));
-  } else if (expectedType === '[object String]' && propertyType === '[object Object]') {
+    return check(strExpectedType, value(...params));
+  } else if (strExpectedType === '[object String]' && propertyType === '[object Object]') {
     return Object.keys(value).filter(key => key.length !== 2).length === 0;
   }
   return false;
@@ -17,7 +22,7 @@ export function check(expectedType, value, ...params) {
 export async function getValue(expectedType, value, currentLang, ...params) {
   const propertyType = toString.call(value);
   if (propertyType === expectedType) {
-    return value; 
+    return value;
   } else if (propertyType === '[object AsyncFunction]') {
     const result = await value(...params);
     return getValue(expectedType, result, ...params);

@@ -1,7 +1,8 @@
 import faker from 'faker';
 
 export default {
-  graphQLType: 'Boolean',
   getFakedValue: () => faker.random.boolean(),
+  requiredProperties: [],
+  graphQLType: 'Boolean',
   mongooseFieldType: Boolean,
 };

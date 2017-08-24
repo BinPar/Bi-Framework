@@ -1,7 +1,8 @@
 import faker from 'faker';
 
 export default {
-  graphQLType: 'String',
   getFakedValue: () => faker.name.image(),
+  requiredProperties: [],
+  graphQLType: 'String',
   mongooseFieldType: String,
 };

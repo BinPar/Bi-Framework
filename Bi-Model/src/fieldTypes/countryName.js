@@ -1,7 +1,8 @@
 import faker from 'faker';
 
 export default {
-  graphQLType: 'String',
   getFakedValue: () => faker.country.city(),
+  requiredProperties: [],
+  graphQLType: 'String',
   mongooseFieldType: String,
 };

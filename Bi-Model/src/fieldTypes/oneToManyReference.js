@@ -3,6 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 
 export default {
   graphQLType: field => `[${field.targetCollectionShortName}]`,
+  requiredProperties: [{ propName: 'targetCollectionShortName', type: String }],
   getFakedValue: field =>
     new Promise((resolve, reject) => {
       mongoose.model(field.targetCollectionShortName.toLowerCase()).findOneRandom((err, result) => {
