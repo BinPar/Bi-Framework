@@ -14,6 +14,7 @@
 - [ ] Basic GraphQL Resolvers
 - [ ] Permissions
 - [ ] Advanced logic (validations, methods, etc)
+- [ ] Automatic testing generation
 - [ ] Documentation
 
 ## Executable

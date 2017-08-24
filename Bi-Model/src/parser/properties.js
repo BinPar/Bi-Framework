@@ -1,9 +1,21 @@
 import settings from '../config/settings.json';
-
-const toString = Object.prototype.toString;
+import { toString, getPrototypeOf, hasOwnProperty } from '../tools/objectUtils';
 
 export function stringifyNativeType(type) {
-  return type;
+  if (type === undefined || type === null) {
+    return toString.call(type);
+  }
+  if (typeof type === 'string') {
+    return type;
+  }
+  if (hasOwnProperty.call(type, 'name') && !!type.name) {
+    return `[object ${type.name}]`;
+  }
+  const proto = getPrototypeOf(type);
+  if (hasOwnProperty.call(proto, 'constructor')) {
+    return `[object ${proto.constructor.name}]`;
+  }
+  return '[object Object]';
 }
 
 export function check(expectedType, value, ...params) {

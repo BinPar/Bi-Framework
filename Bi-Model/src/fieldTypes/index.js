@@ -1,4 +1,5 @@
 import boolean from './boolean';
+import string from './string';
 import cityName from './cityName';
 import countryName from './countryName';
 import dateTime from './dateTime';
@@ -9,9 +10,11 @@ import lastName from './lastName';
 import object from './object';
 import oneToManyReference from './oneToManyReference';
 import phone from './phone';
+import NIFCIF from './NIFCIF';
 
 export default {
   boolean,
+  string,
   cityName,
   countryName,
   dateTime,
@@ -22,4 +25,5 @@ export default {
   object,
   oneToManyReference,
   phone,
+  NIFCIF,
 };
