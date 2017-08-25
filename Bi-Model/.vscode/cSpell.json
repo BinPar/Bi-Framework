@@ -9,6 +9,7 @@
         "NIFCIF",
         "demonym",
         "denormalized",
+        "lcov",
         "quokka"
     ],
     // flagWords - list of words to be always considered incorrect
