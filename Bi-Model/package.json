@@ -11,7 +11,8 @@
     "testDev": "jest --watch",
     "testCoverage": "jest --coverage",
     "testCoverageDev": "jest --watch --coverage",
-    "openTestCoverageReport": "jest --coverage; open ./coverage/lcov-report/index.html"
+    "openTestCoverageReport": "jest --coverage; open ./coverage/lcov-report/index.html",
+    "openTestCoverageReportDev": "open ./coverage/lcov-report/index.html;jest --watch --coverage"
   },
   "quokka": {
     "babel": true
