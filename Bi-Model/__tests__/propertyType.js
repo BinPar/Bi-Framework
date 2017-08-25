@@ -41,6 +41,10 @@ describe('Stringify type verification', () => {
     expect(stringifyNativeType(Object)).toBe(expectedResult);
     expect(stringifyNativeType({})).toBe(expectedResult);
   });
+  test('Undefined & null', () => {
+    expect(stringifyNativeType(undefined)).toBe('[object Undefined]');
+    expect(stringifyNativeType(null)).toBe('[object Null]');
+  });
 });
 
 describe('Property value verification', () => {
@@ -49,6 +53,7 @@ describe('Property value verification', () => {
     expect(check('[object Date]', new Date())).toBe(true);
     expect(check('[object Number]', 12)).toBe(true);
     expect(check('[object Array]', [])).toBe(true);
+    expect(check(Object, {})).toBe(true);
     expect(check('[object String]', 'test')).toBe(true);
     expect(check('[object String]', 12)).toBe(false);
     expect(check('[object Number]', '12')).toBe(false);
