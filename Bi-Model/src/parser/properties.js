@@ -41,10 +41,7 @@ export async function getValue(expectedType, value, currentLang, ...params) {
   } else if (propertyType === '[object Function]') {
     return getValue(expectedType, value(...params), ...params);
   } else if (expectedType === '[object String]' && propertyType === '[object Object]') {
-    if (currentLang == null) {
-      return value[settings.defaultLanguage];
-    }
     return value[currentLang] || value[settings.defaultLanguage];
   }
-  return false;
+  return null;
 }

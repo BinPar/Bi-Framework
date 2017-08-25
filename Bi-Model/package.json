@@ -8,16 +8,18 @@
     "dev": "cross-env NODE_ENV=dev nodemon -e js,graphql,json --exec babel-node src/index.js",
     "compile": "rm -rf .compiled && babel src --out-dir .compiled/src",
     "test": "jest",
+    "testDev": "jest --watch",
     "testCoverage": "jest --coverage",
-    "openTestCoverageReport": "jest --coverage; open ./coverage/lcov-report/index.html",
-    "testDev": "jest --watch"
+    "testCoverageDev": "jest --watch --coverage",
+    "openTestCoverageReport": "jest --coverage; open ./coverage/lcov-report/index.html"
   },
   "quokka": {
     "babel": true
   },
   "jest": {
     "testEnvironment": "node",
-    "collectCoverage": true
+    "collectCoverage": false,
+    "mapCoverage": true
   },
   "author": "BinPar Team S.L:",
   "license": "MIT",
