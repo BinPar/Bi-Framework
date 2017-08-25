@@ -27,15 +27,16 @@ export function check(expectedType, value, ...params) {
 }
 
 export async function getValue(expectedType, value, currentLang, ...params) {
+  const strExpectedType = stringifyNativeType(expectedType);
   const propertyType = toString.call(value);
-  if (propertyType === expectedType) {
+  if (propertyType === strExpectedType) {
     return value;
   } else if (propertyType === '[object AsyncFunction]') {
     const result = await value(...params);
-    return getValue(expectedType, result, ...params);
+    return getValue(strExpectedType, result, ...params);
   } else if (propertyType === '[object Function]') {
-    return getValue(expectedType, value(...params), ...params);
-  } else if (expectedType === '[object String]' && propertyType === '[object Object]') {
+    return getValue(strExpectedType, value(...params), ...params);
+  } else if (strExpectedType === '[object String]' && propertyType === '[object Object]') {
     return value[currentLang] || value[settings.defaultLanguage];
   }
   return null;
