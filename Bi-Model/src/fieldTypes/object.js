@@ -1,6 +1,6 @@
 export default {
   graphQLType: field => `[${field.shortName}]`,
+  getFakedValue: () => ({}),
   requiredProperties: [],
-  getFakedValue: () => {},
   mongooseFieldType: Object,
 };
