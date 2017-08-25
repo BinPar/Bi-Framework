@@ -1,8 +1,6 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
-import faker from 'faker';
-import moment from 'moment';
-import types from '../../fieldTypes';
-import gender from '../../enums/gender';
+import types from '../../../src/fieldTypes';
+import gender from '../../../src/enums/gender';
 
 export default {
   shortName: 'Companies',

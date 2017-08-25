@@ -1,7 +1,7 @@
 import validateModel from '../src/parser/validateModel';
 import checkField from '../src/parser/checkField';
 import types from '../src/fieldTypes';
-import customers from '../src/sample/model/customers';
+import customers from '../sample/full/model/customers';
 
 const { describe, test, expect } = global;
 

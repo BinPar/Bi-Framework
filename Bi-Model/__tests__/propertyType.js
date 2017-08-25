@@ -43,7 +43,7 @@ describe('Stringify type verification', () => {
   });
 });
 
-describe('Property type verification', () => {
+describe('Property value verification', () => {
   test('basic', () => {
     expect(check('[object String]', '')).toBe(true);
     expect(check('[object Date]', new Date())).toBe(true);
@@ -57,12 +57,12 @@ describe('Property type verification', () => {
     expect(check('[object Array]', new Array(5))).toBe(true);
   });
 
-  test('localization', () => {
+  test('Localization', () => {
     expect(check('[object String]', { es: 'hola', en: 'hello' })).toBe(true);
     expect(check('[object String]', { test: 'hola' })).toBe(false);
   });
 
-  test('functions', () => {
+  test('Functions', () => {
     expect(check('[object String]', doc => doc.title, { title: 'test' })).toBe(true);
     expect(check('[object Date]', () => new Date())).toBe(true);
     expect(check('[object Number]', (a, b) => a + b, 4, 5)).toBe(true);
@@ -75,7 +75,7 @@ describe('Property type verification', () => {
     expect(check('[object String]', () => ({ es: 'hola', en: 'hello' }))).toBe(true);
   });
 
-  test('promises', () => {
+  test('Promises', () => {
     expect(check('[object String]', async () => '')).toBe(true);
     expect(check('[object Date]', async () => '')).toBe(true);
   });
