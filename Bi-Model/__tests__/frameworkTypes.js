@@ -21,7 +21,11 @@ describe('BinPar Framework types coverage', () => {
     expect(check(String, types.phone.getFakedValue())).toBe(true);
     expect(check(String, types.string.getFakedValue())).toBe(true);
 
-    expect(types.oneToManyReference.graphQLType({ targetCollectionShortName: 'References' })).toBe('[References]');
-    expect(types.oneToManyReference.mongooseRef({ targetCollectionShortName: 'References' })).toBe('references');
+    expect(types.oneToManyReference.graphQLType({ targetCollectionShortName: 'References' })).toBe(
+      '[References]',
+    );
+    expect(types.oneToManyReference.mongooseRef({ targetCollectionShortName: 'References' })).toBe(
+      'references',
+    );
   });
 });
