@@ -1,6 +1,7 @@
 import boolean from './boolean';
-import string from './string';
+import fString from './string';
 import cityName from './cityName';
+import companyName from './companyName';
 import countryName from './countryName';
 import dateTime from './dateTime';
 import email from './email';
@@ -14,8 +15,9 @@ import NIFCIF from './NIFCIF';
 
 export default {
   boolean,
-  string,
+  string: fString,
   cityName,
+  companyName,
   countryName,
   dateTime,
   email,

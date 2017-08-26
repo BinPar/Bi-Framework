@@ -22,6 +22,7 @@ export default {
         en: 'Nombre',
       },
       type: types.companyName,
+      required: true,
     },
     createdBy: {
       label: {

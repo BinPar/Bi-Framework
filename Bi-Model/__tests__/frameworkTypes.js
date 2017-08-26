@@ -17,12 +17,12 @@ describe('BinPar Framework types coverage', () => {
     expect(check(String, types.lastName.getFakedValue())).toBe(true);
     expect(check(String, types.NIFCIF.getFakedValue())).toBe(true);
     expect(check(Object, types.object.getFakedValue())).toBe(true);
-    expect(types.object.graphQLType({ shortName: 'Test' })).toBe('[Test]');
+    expect(types.object.graphQLType({ shortName: 'Test' })).toBe('Test');
     expect(check(String, types.phone.getFakedValue())).toBe(true);
     expect(check(String, types.string.getFakedValue())).toBe(true);
 
     expect(types.oneToManyReference.graphQLType({ targetCollectionShortName: 'References' })).toBe(
-      '[References]',
+      'References',
     );
     expect(types.oneToManyReference.mongooseRef({ targetCollectionShortName: 'References' })).toBe(
       'references',

@@ -1,32 +1,38 @@
 import { getValue } from './properties';
+import optimizeModel from './optimizeModel';
 
 async function getGraphQlField(name, field) {
-  if (field.type) {
-    const value = await getValue('[object String]', field.type.graphQLType, null, field);
-    return `  ${name}: ${value}`;
+  if (Array.isArray(field.type)) {
+    const value = await getValue('[object String]', field.type[0].graphQLType, null, field);
+    return `  ${name}: [${value}]${field.required === true ? '!' : ''}`;
   }
-  return null;
+  const value = await getValue('[object String]', field.type.graphQLType, null, field);
+  return `  ${name}: ${value}${field.required === true ? '!' : ''}`;
 }
+
 async function getFields(model) {
   const fields = await Promise.all(
     Object.keys(model).map(name => getGraphQlField(name, model[name])),
   );
   return fields.filter(value => value);
 }
+
 export async function generateGraphQLEntity(entity) {
-  const lines = [];
+  let lines = [];
   lines.push(`type ${entity.shortName} {`);
   lines.push('  _id: ID!');
   const fields = await getFields(entity.model);
-  lines.push(fields.join('\r\n'));
+  lines = lines.concat(fields);
   lines.push('}');
   lines.push('');
   return lines.join('\r\n');
 }
 
 export async function generateGraphQLSchema(model) {
+  let optimizedModel = model;
+  optimizedModel = optimizeModel(optimizedModel);
   const schema = await Promise.all(
-    model.map(async (entity) => {
+    optimizedModel.map(async (entity) => {
       const entitySchema = await generateGraphQLEntity(entity);
       return entitySchema;
     }),

@@ -22,6 +22,7 @@ export default {
         en: 'Name',
       },
       type: types.cityName,
+      required: true,
     },
     country: {
       label: {
@@ -31,6 +32,7 @@ export default {
       type: types.oneToManyReference,
       targetCollectionShortName: 'Countries',
       denormalized: true,
+      required: true,
       denormalizedFields: ['name'],
     },
   },

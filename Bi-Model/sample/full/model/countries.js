@@ -23,6 +23,7 @@ export default {
         en: 'Name',
       },
       type: types.countryName,
+      required: true,
     },
     demonym: {
       label: {

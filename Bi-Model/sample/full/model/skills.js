@@ -23,6 +23,7 @@ export default {
         en: 'Name',
       },
       type: types.string,
+      required: true,
       getFakedValue: () => faker.name.jobType(),
     },
   },
