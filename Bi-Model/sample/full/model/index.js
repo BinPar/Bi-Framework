@@ -1,5 +1,6 @@
 import cities from './cities';
 import companies from './companies';
+import contacts from './contacts';
 import countries from './countries';
 import customers from './customers';
 import markets from './markets';

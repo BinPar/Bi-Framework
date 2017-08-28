@@ -15,6 +15,7 @@ describe('Generate GraphQL Entities', () => {
 describe('Generate GraphQL Schema', () => {
   test('Full sample model', async () => {
     const schema = await generateGraphQLSchema(fullSampleModel);
+    console.log(schema);
     expect(schema.indexOf(`${fullSampleModel[0].shortName}`)).toBeGreaterThan(1);
   });
 });

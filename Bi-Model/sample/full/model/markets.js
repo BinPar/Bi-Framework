@@ -28,7 +28,7 @@ export default {
     },
   },
   permissions: {
-    display: ['all'],
+    query: ['all'],
     update: ['market management'],
     delete: ['market management'],
     insert: ['market management', 'sales'],

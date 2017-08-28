@@ -8,7 +8,7 @@ function addEntityAndReferences(model) {
     const properties = Object.keys(entity.model).map(key => entity.model[key]);
     properties.filter(property => property.type.isSubObject).forEach((subEntity) => {
       if (!getEntityFromModel(model, subEntity.shortName)) {
-        model.push(subEntity);
+        model.push({ ...subEntity, isVistual: true });
         needAdditionalLoop = true;
       }
     });

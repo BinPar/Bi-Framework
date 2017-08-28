@@ -35,7 +35,7 @@ export default {
     },
   },
   permissions: {
-    display: ['admin', 'financial', 'sales'],
+    query: ['admin', 'financial', 'sales'],
     update: ['admin', 'financial', 'sales'],
     delete: (doc, user) => user.can(['admin', 'sales']) || doc.createdBy === user._id,
     insert: ['admin', 'sales'],

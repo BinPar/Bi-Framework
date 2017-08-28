@@ -1,6 +1,4 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
-import faker from 'faker';
-import moment from 'moment';
 import types from '../../../src/fieldTypes';
 import gender from '../../../src/enums/gender';
 
@@ -24,35 +22,6 @@ export default {
         en: 'Phone',
       },
       type: types.phone,
-    },
-    firstContactAt: {
-      label: {
-        es: 'Primer contacto',
-        en: 'Fist contact',
-      },
-      type: types.dateTime,
-      maxValue: () => new Date(),
-      indexed: true,
-    },
-    lastContactAt: {
-      label: {
-        es: 'Próximo contacto',
-        en: 'Next contact',
-      },
-      type: types.dateTime,
-      minValue: doc => doc.firstContactAt,
-      maxValue: new Date(),
-      indexed: true,
-    },
-    nextContactAt: {
-      label: {
-        es: 'Próximo contacto',
-        en: 'Next contact',
-      },
-      type: types.dateTime,
-      minValue: () => new Date(),
-      maxValue: () => new Date(moment().add(6, 'months')),
-      indexed: true,
     },
     sexo: {
       label: {
@@ -130,14 +99,6 @@ export default {
       type: types.email,
       required: false, // default
     },
-    market: {
-      label: {
-        es: 'Mercado',
-        en: 'Market',
-      },
-      type: types.oneToManyReference,
-      targetCollectionShortName: 'Markets',
-    },
     company: {
       label: {
         es: 'Empresa',
@@ -158,90 +119,6 @@ export default {
       denormalized: true,
       denormalizedFields: ['demonym'],
       targetCollectionSelect: col => col.sort({ demonym: 1 }),
-    },
-    skills: {
-      label: {
-        es: 'Habilidades',
-        en: 'Skills',
-      },
-      type: [types.oneToManyReference],
-      targetCollectionShortName: 'Skills',
-      denormalized: true,
-      denormalizedFields: ['name', 'type'],
-      validations: [
-        {
-          check: doc => doc.skills && doc.skills.length,
-          error: {
-            es: 'Es necesario tener al menos una habilidad.',
-            en: 'It is required to add one skill at least',
-          },
-        },
-      ],
-    },
-    CIF: {
-      label: 'CIF',
-      type: types.NIFCIF,
-      required: true,
-      permissions: {
-        display: ['admin', 'financial'],
-        update: (doc, user) => user.can('admin') || doc.createdBy === user._id,
-        remove: 'admin',
-        insert: 'admin',
-      },
-    },
-    avatar: {
-      label: 'Avatar',
-      type: types.image,
-      getFakedValue: () => faker.name.avatar(),
-      permissions: {
-        display: (doc, user) => user.can('admin') || doc.createdBy === user._id,
-        update: (doc, user) => user.can('admin') || doc.createdBy === user._id,
-        remove: 'admin',
-        add: 'admin',
-      },
-    },
-    address: {
-      type: types.object,
-      shortName: 'Address',
-      label: {
-        es: 'Dirección',
-        en: 'Address',
-      },
-      required: true,
-      model: {
-        country: {
-          label: {
-            es: 'País',
-            en: 'Country',
-          },
-          type: types.oneToManyReference,
-          targetCollectionShortName: 'Countries',
-          denormalized: true,
-          denormalizedFields: ['name'],
-          targetCollectionSelect: col => col.sort({ name: 1 }),
-          // solo un ejemplo dado que tomaría el primero de los campos de-normalizados.
-          // Al igual que para la búsqueda predictiva.
-        },
-        city: {
-          label: {
-            es: 'Ciudad',
-            en: 'City',
-          },
-          type: types.oneToManyReference,
-          targetCollectionShortName: 'Cities',
-          denormalized: true,
-          denormalizedFields: ['name'],
-          targetCollectionSelect: (col, doc) => col.filter({ 'country._id': doc.country._id }),
-        },
-        lines: {
-          label: {
-            es: 'Lineas',
-            en: 'Lines',
-          },
-          type: [types.string],
-          required: true,
-        },
-      },
     },
     updatedAt: {
       // No label so not displayed

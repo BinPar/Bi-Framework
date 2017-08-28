@@ -35,7 +35,7 @@ export default {
     },
   },
   permissions: {
-    display: ['all'],
+    query: ['all'],
     update: ['admin'],
     delete: ['admin'],
     insert: ['admin', 'sales'],
