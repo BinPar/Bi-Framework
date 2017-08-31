@@ -16,7 +16,7 @@ export default {
     es: gender.female,
   },
   model: {
-    phone: {
+    name: {
       label: {
         es: 'Name',
         en: 'Nombre',

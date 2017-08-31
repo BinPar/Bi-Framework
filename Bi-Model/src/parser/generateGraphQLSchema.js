@@ -4,7 +4,7 @@ import optimizeModel from './optimizeModel';
 async function getGraphQlField(name, field) {
   if (Array.isArray(field.type)) {
     const value = await getValue('[object String]', field.type[0].graphQLType, null, field);
-    return `  ${name}: [${value}]${field.required === true ? '!' : ''}`;
+    return `  ${name}: [${value}!]${field.required === true ? '!' : ''}`;
   }
   const value = await getValue('[object String]', field.type.graphQLType, null, field);
   return `  ${name}: ${value}${field.required === true ? '!' : ''}`;

@@ -1,32 +1,32 @@
 import isEquivalent from '../tools/isEquivalent';
 
-function getEntityFromModel(model, shortName) {
-  return model.find(entity => entity.shortName === shortName);
+function getEntityFromModel(dataModel, shortName) {
+  return dataModel.find(entity => entity.shortName === shortName);
 }
 
-function addEntityAndReferences(model) {
+function addEntityAndReferences(dataModel) {
   let needAdditionalLoop = false;
-  model.forEach((entity) => {
+  dataModel.forEach((entity) => {
     if (entity.model) {
       const properties = Object.keys(entity.model).map(key => entity.model[key]);
       properties.filter(property => property.type.isSubObject).forEach((subEntity) => {
-        if (!getEntityFromModel(model, subEntity.shortName)) {
-          model.push({ ...subEntity, isVirtual: true });
+        if (!getEntityFromModel(dataModel, subEntity.shortName)) {
+          dataModel.push({ ...subEntity, isVirtual: true });
           needAdditionalLoop = true;
         }
       });
     }
   });
-  if (needAdditionalLoop) addEntityAndReferences(model);
+  if (needAdditionalLoop) addEntityAndReferences(dataModel);
 }
 
-function processEntity(model, entity, orderedModel) {
+function processEntity(dataModel, entity, orderedDataModel) {
   if (entity.composedBy) {
-    const targetEntity = getEntityFromModel(model, entity.composedBy.shortName);
+    const targetEntity = getEntityFromModel(dataModel, entity.composedBy.shortName);
     if (targetEntity) {
-      const index = model.indexOf(targetEntity);
-      model.splice(index, 1);
-      processEntity(model, targetEntity, orderedModel);
+      const index = dataModel.indexOf(targetEntity);
+      dataModel.splice(index, 1);
+      processEntity(dataModel, targetEntity, orderedDataModel);
     }
   }
   if (entity.model) {
@@ -34,23 +34,24 @@ function processEntity(model, entity, orderedModel) {
       .map(name => entity.model[name].targetCollectionShortName)
       .filter(target => target)
       .forEach((referencedCollectionName) => {
-        const targetEntity = getEntityFromModel(model, referencedCollectionName);
+        const targetEntity = getEntityFromModel(dataModel, referencedCollectionName);
         if (targetEntity) {
-          const index = model.indexOf(targetEntity);
-          model.splice(index, 1);
-          processEntity(model, targetEntity, orderedModel);
+          const index = dataModel.indexOf(targetEntity);
+          dataModel.splice(index, 1);
+          processEntity(dataModel, targetEntity, orderedDataModel);
         }
       });
   }
-  orderedModel.push(entity);
+  orderedDataModel.push(entity);
 }
-function getRelatedEntities(entity, model) {
+
+function getRelatedEntities(entity, dataModel) {
   if (entity.model) {
     return [entity];
   }
   let result = [];
   entity.composedModel.forEach((subEntity) => {
-    result = result.concat(getRelatedEntities(subEntity, model));
+    result = result.concat(getRelatedEntities(subEntity, dataModel));
   });
   return result;
 }
@@ -78,11 +79,11 @@ function calculateComposedModel(entity, model) {
   return entity;
 }
 
-function addComposedEntities(model) {
+function addComposedEntities(dataModel) {
   let newModel = [];
-  model.forEach((entity) => {
+  dataModel.forEach((entity) => {
     if (entity.composedModel && !entity.model) {
-      newModel = newModel.concat(calculateComposedModel(entity, model));
+      newModel = newModel.concat(calculateComposedModel(entity, dataModel));
     } else {
       newModel.push(entity);
     }
