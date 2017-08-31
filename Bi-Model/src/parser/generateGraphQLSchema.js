@@ -19,21 +19,29 @@ async function getFields(model) {
 
 export async function generateGraphQLEntity(entity) {
   let lines = [];
-  const fields = await getFields(entity.model);
-  lines.push(`type ${entity.shortName} {`);
-  lines.push('  _id: ID!');
-  lines = lines.concat(fields);
-  lines.push('}');
-  lines.push('');
-  lines.push(`input ${entity.shortName}AddInput {`);
-  lines = lines.concat(fields);
-  lines.push('}');
-  lines.push('');
-  lines.push(`input ${entity.shortName}Input {`);
-  lines.push('  _id: ID!');
-  lines = lines.concat(fields.map(field => field.replace('!', '')));
-  lines.push('}');
-  lines.push('');
+  if (entity.model) {
+    const fields = await getFields(entity.model);
+    lines.push(
+      `${entity.isInterface ? 'interface' : 'type'} ${entity.shortName}${entity.composedBy
+        ? ` implements ${entity.composedBy.shortName}`
+        : ''}`,
+    );
+    lines.push('  _id: ID!');
+    lines = lines.concat(fields);
+    lines.push('}');
+    lines.push('');
+    if (!entity.isInterface) {
+      lines.push(`input ${entity.shortName}AddInput {`);
+      lines = lines.concat(fields);
+      lines.push('}');
+      lines.push('');
+      lines.push(`input ${entity.shortName}Input {`);
+      lines.push('  _id: ID!');
+      lines = lines.concat(fields.map(field => field.replace('!', '')));
+      lines.push('}');
+      lines.push('');
+    }
+  }
   return lines.join('\r\n');
 }
 

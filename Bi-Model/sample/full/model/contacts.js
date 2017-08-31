@@ -1,6 +1,6 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
 import gender from '../../../src/enums/gender';
-import lead from './lead';
+import leads from './leads';
 import customers from './customers';
 
 export default {
@@ -16,7 +16,7 @@ export default {
   gender: {
     es: gender.male,
   },
-  composedModel: [lead, customers],
+  composedModel: [leads, customers],
   permissions: {
     query: ['admin', 'financial', 'sales'],
   },

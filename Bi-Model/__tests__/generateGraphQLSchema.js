@@ -6,8 +6,10 @@ const { describe, test, expect } = global;
 describe('Generate GraphQL Entities', () => {
   fullSampleModel.forEach((entity) => {
     test(`${entity.shortName} Test`, async () => {
-      const schema = await generateGraphQLEntity(entity);
-      expect(schema.indexOf(`${entity.shortName}`)).toBeGreaterThan(1);
+      if (entity.model) {
+        const schema = await generateGraphQLEntity(entity);
+        expect(schema.indexOf(`${entity.shortName}`)).toBeGreaterThan(1);
+      }
     });
   });
 });

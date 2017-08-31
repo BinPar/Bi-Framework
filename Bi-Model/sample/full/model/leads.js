@@ -3,14 +3,14 @@ import types from '../../../src/fieldTypes';
 import gender from '../../../src/enums/gender';
 
 export default {
-  shortName: 'Customers',
+  shortName: 'Leads',
   singularName: {
-    es: 'cliente',
-    en: 'customer',
+    es: 'prospecto',
+    en: 'lead',
   },
   pluralName: {
-    es: 'clientes',
-    en: 'customers',
+    es: 'prospectos',
+    en: 'leads',
   },
   gender: {
     es: gender.male,

@@ -10,6 +10,7 @@
         "demonym",
         "denormalized",
         "lcov",
+        "prospectos",
         "quokka"
     ],
     // flagWords - list of words to be always considered incorrect
