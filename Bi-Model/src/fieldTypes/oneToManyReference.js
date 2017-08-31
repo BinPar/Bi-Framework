@@ -5,6 +5,7 @@ import mongoose, { Schema } from 'mongoose';
 export default {
   graphQLType: field => `${field.targetCollectionShortName}`,
   getFakedValue: async field =>
+    // TODO: Review with combined collections
     new Promise((resolve, reject) => {
       mongoose.model(field.targetCollectionShortName.toLowerCase()).findOneRandom((err, result) => {
         if (err) {

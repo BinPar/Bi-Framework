@@ -16,7 +16,7 @@ export default {
   gender: {
     es: gender.male,
   },
-  model: [lead, customers],
+  composedModel: [lead, customers],
   permissions: {
     query: ['admin', 'financial', 'sales'],
   },

@@ -10,6 +10,8 @@ import image from './image';
 import lastName from './lastName';
 import object from './object';
 import oneToManyReference from './oneToManyReference';
+import manyToOneReference from './manyToOneReference';
+import manyToManyReference from './manyToManyReference';
 import phone from './phone';
 import NIFCIF from './NIFCIF';
 
@@ -26,6 +28,8 @@ export default {
   lastName,
   object,
   oneToManyReference,
+  manyToOneReference,
+  manyToManyReference,
   phone,
   NIFCIF,
 };

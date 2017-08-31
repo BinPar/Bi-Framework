@@ -33,6 +33,17 @@ export default {
       type: types.string,
       getFakedValue: () => faker.lorem.word(),
     },
+    cities: {
+      label: {
+        es: 'Ciudades',
+        en: 'Cities',
+      },
+      type: types.manyToOneReference,
+      targetCollectionShortName: 'Cities',
+      targetCollectionField: 'country',
+      denormalized: true,
+      denormalizedFields: ['name'],
+    },
   },
   permissions: {
     query: ['all'],
