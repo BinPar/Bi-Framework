@@ -3,6 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 
 export default {
   graphQLType: field => `[${field.targetCollectionShortName}!]`,
+  requiresMongooseModel: true,
   getFakedValue: async field =>
     new Promise((resolve, reject) => {
       // TODO: Review with combined collections
