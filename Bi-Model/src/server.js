@@ -8,8 +8,6 @@ import './config/db';
 
 export default async function server(serverSettings, dataModel, resolvers) {
   const typeDefs = await generateGraphQLSchema(dataModel);
-  console.clear();
-  console.log(typeDefs);
   if (serverSettings) settings.setSettings(serverSettings);
 
   const app = express();
