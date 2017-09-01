@@ -24,6 +24,7 @@ export default {
       },
       type: types.cityName,
       required: true,
+      indexed: true,
     },
     country: {
       label: {

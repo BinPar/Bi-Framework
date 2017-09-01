@@ -25,6 +25,7 @@ export default {
       },
       type: types.countryName,
       required: true,
+      indexed: true,
     },
     demonym: {
       label: {
@@ -32,6 +33,7 @@ export default {
         en: 'Demonym',
       },
       type: types.string,
+      indexed: true,
       getFakedValue: () => faker.lorem.word(),
     },
     cities: {

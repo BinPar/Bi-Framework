@@ -50,6 +50,7 @@ export default {
       },
       type: types.email,
       required: false, // default
+      indexed: true,
     },
     company: {
       label: {

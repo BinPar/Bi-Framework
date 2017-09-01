@@ -25,6 +25,7 @@ export default {
       },
       type: types.string,
       required: true,
+      indexed: true,
       getFakedValue: () => faker.lorem.word(),
     },
   },

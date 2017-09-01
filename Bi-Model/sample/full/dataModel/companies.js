@@ -23,6 +23,7 @@ export default {
         en: 'Nombre',
       },
       type: types.companyName,
+      indexed: true,
       required: true,
     },
     createdBy: {
