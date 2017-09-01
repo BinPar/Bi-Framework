@@ -1,7 +1,7 @@
 import isEquivalent from '../tools/isEquivalent';
 
-function getEntityFromModel(dataModel, shortName) {
-  return dataModel.find(entity => entity.shortName === shortName);
+function getEntityFromModel(dataModel, collectionShortName) {
+  return dataModel.find(entity => entity.collectionShortName === collectionShortName);
 }
 
 function addEntityAndReferences(dataModel) {
@@ -10,7 +10,7 @@ function addEntityAndReferences(dataModel) {
     if (entity.model) {
       const properties = Object.keys(entity.model).map(key => entity.model[key]);
       properties.filter(property => property.type.isSubObject).forEach((subEntity) => {
-        if (!getEntityFromModel(dataModel, subEntity.shortName)) {
+        if (!getEntityFromModel(dataModel, subEntity.collectionShortName)) {
           dataModel.push({ ...subEntity, isVirtual: true });
           needAdditionalLoop = true;
         }
@@ -22,7 +22,7 @@ function addEntityAndReferences(dataModel) {
 
 function processEntity(dataModel, entity, orderedDataModel) {
   if (entity.composedBy) {
-    const targetEntity = getEntityFromModel(dataModel, entity.composedBy.shortName);
+    const targetEntity = getEntityFromModel(dataModel, entity.composedBy.collectionShortName);
     if (targetEntity) {
       const index = dataModel.indexOf(targetEntity);
       dataModel.splice(index, 1);
@@ -92,12 +92,12 @@ function addComposedEntities(dataModel) {
 }
 
 export default (input) => {
-  let model = [...input];
-  model = addComposedEntities(model);
-  addEntityAndReferences(model);
+  let dataModel = [...input];
+  dataModel = addComposedEntities(dataModel);
+  addEntityAndReferences(dataModel);
   const orderedModel = [];
-  while (model.length) {
-    processEntity(model, model.pop(), orderedModel);
+  while (dataModel.length) {
+    processEntity(dataModel, dataModel.pop(), orderedModel);
   }
   return orderedModel;
 };

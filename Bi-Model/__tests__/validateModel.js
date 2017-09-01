@@ -1,14 +1,14 @@
 import validateModel from '../src/parser/validateModel';
 import checkField from '../src/parser/checkField';
 import types from '../src/fieldTypes';
-import customers from '../sample/full/model/customers';
+import customers from '../sample/full/dataModel/customers';
 
 const { describe, test, expect } = global;
 
 describe('Validate model verification', () => {
   test('Basic fields', () => {
-    expect(checkField('phone', customers.model.phone, customers.shortName)).toBe(true);
-    expect(checkField('firstContactAt', customers.model.firstContactAt, customers.shortName)).toBe(
+    expect(checkField('phone', customers.model.phone, customers.collectionShortName)).toBe(true);
+    expect(checkField('firstContactAt', customers.model.firstContactAt, customers.collectionShortName)).toBe(
       true,
     );
     expect(() => {
@@ -105,9 +105,9 @@ describe('Validate model verification', () => {
     );
   });
   test('Checking complex field integrity', () => {
-    expect(checkField('address', customers.model.address, customers.shortName)).toBe(true);
+    expect(checkField('address', customers.model.address, customers.collectionShortName)).toBe(true);
   });
   test('Validating complex model', () => {
-    expect(validateModel(customers.model, customers.shortName)).toBe(true);
+    expect(validateModel(customers.model, customers.collectionShortName)).toBe(true);
   });
 });

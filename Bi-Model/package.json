@@ -4,8 +4,8 @@
   "description": "Bi-Model of the Bi-FrameWork",
   "main": ".compiled/src/index.js",
   "scripts": {
-    "start": "node .compiled/src/index.js",
-    "dev": "cross-env NODE_ENV=dev nodemon -e js,graphql,json --exec babel-node src/index.js",
+    "start": "node .compiled/src/runTestServer.js",
+    "dev": "cross-env NODE_ENV=dev nodemon -e js,graphql,json --exec babel-node src/runTestServer.js",
     "compile": "rm -rf .compiled && babel src --out-dir .compiled/src",
     "test": "jest",
     "testDev": "jest --watch",
@@ -33,7 +33,14 @@
     "moment": "^2.18.1",
     "mongoose": "^4.11.7",
     "mongoose-simple-random": "^0.4.1",
-    "validator": "^8.0.0"
+    "validator": "^8.0.0",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "graphql": "^0.10.5",
+    "graphql-date": "^1.0.3",
+    "graphql-tools": "^1.1.0",
+    "jsonwebtoken": "^7.4.3",
+    "apollo-server-express": "^1.0.5"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

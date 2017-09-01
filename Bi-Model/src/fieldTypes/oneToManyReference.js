@@ -1,9 +1,10 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
 import mongoose, { Schema } from 'mongoose';
 
-
 export default {
-  graphQLType: field => `${field.targetCollectionShortName}`,
+  graphQLType: (field, databaseModel, postFix) => `${databaseModel.find(
+    entity => entity.collectionShortName === field.targetCollectionShortName,
+  ).entityShortName}${postFix}`,
   requiresMongooseModel: true,
   getFakedValue: async field =>
     // TODO: Review with combined collections

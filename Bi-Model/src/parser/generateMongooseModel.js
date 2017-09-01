@@ -10,7 +10,7 @@ export default function generateMongooseModel(entity) {
     const field = entity.model[fieldName];
     if (hasOwnProperty.call(baseSchemaObject, fieldName)) {
       throw new Error(
-        `The field name "${fieldName}" is duplicated in entity "${entity.shortName}"`,
+        `The field name "${fieldName}" is duplicated in entity "${entity.collectionShortName}"`,
       );
     }
     baseSchemaObject[fieldName] = getMongooseField(fieldName, field);
@@ -18,7 +18,7 @@ export default function generateMongooseModel(entity) {
 
   const mongooseSchema = new Schema(baseSchemaObject);
   return mongoose.model(
-    `${entity.shortName[0].toLowerCase()}${entity.shortName.substr(1)}`,
+    `${entity.collectionShortName[0].toLowerCase()}${entity.collectionShortName.substr(1)}`,
     mongooseSchema,
   );
 }

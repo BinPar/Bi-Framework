@@ -1,20 +1,20 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
-import faker from 'faker';
 import types from '../../../src/fieldTypes';
 import gender from '../../../src/enums/gender';
 
 export default {
-  shortName: 'Countries',
+  collectionShortName: 'Cities',
+  entityShortName: 'City',
   singularName: {
-    es: 'país',
-    en: 'country',
+    es: 'ciudad',
+    en: 'city',
   },
   pluralName: {
-    es: 'países',
-    en: 'countries',
+    es: 'ciudades',
+    en: 'cities',
   },
   gender: {
-    es: gender.male,
+    es: gender.female,
   },
   model: {
     name: {
@@ -22,26 +22,18 @@ export default {
         es: 'Nombre',
         en: 'Name',
       },
-      type: types.countryName,
+      type: types.cityName,
       required: true,
     },
-    demonym: {
+    country: {
       label: {
-        es: 'Gentilicio',
-        en: 'Demonym',
+        es: 'País',
+        en: 'Country',
       },
-      type: types.string,
-      getFakedValue: () => faker.lorem.word(),
-    },
-    cities: {
-      label: {
-        es: 'Ciudades',
-        en: 'Cities',
-      },
-      type: types.manyToOneReference,
-      targetCollectionShortName: 'Cities',
-      targetCollectionField: 'country',
+      type: types.oneToManyReference,
+      targetCollectionShortName: 'Countries',
       denormalized: true,
+      required: true,
       denormalizedFields: ['name'],
     },
   },

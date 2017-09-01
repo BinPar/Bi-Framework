@@ -1,12 +1,12 @@
-import fullSampleModel from '../sample/full/model';
-import optimizeModel from '../src/parser/optimizeModel';
+import fullSampleDataModel from '../sample/full/dataModel';
+import optimizeDataModel from '../src/parser/optimizeDataModel';
 
 const { describe, test, expect } = global;
 
 describe('Optimize Model', () => {
   test('Full sample model', async () => {
-    const result = optimizeModel(fullSampleModel);
-    expect(result.some(entity => entity.shortName === 'Address')).toBe(true);
-    expect(result[result.length - 1].shortName).toBe('Customers');
+    const result = optimizeDataModel(fullSampleDataModel);
+    expect(result.some(entity => entity.entityShortName === 'Address')).toBe(true);
+    expect(result[result.length - 1].collectionShortName).toBe('Customers');
   });
 });

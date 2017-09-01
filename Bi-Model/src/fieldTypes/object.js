@@ -1,5 +1,5 @@
 export default {
-  graphQLType: field => `${field.shortName}`,
+  graphQLType: (field, _, postFix) => `${field.entityShortName}${postFix}`,
   getFakedValue: () => ({}),
   requiredProperties: [],
   mongooseFieldType: Object,

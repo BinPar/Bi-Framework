@@ -1,22 +1,19 @@
-import fullSampleModel from '../sample/full/model';
-import { generateGraphQLSchema, generateGraphQLEntity } from '../src/parser/generateGraphQLSchema';
+import { makeExecutableSchema } from 'graphql-tools';
+import fullSampleModel from '../sample/full/dataModel';
+import { generateGraphQLSchema } from '../src/parser/generateGraphQLSchema';
 
 const { describe, test, expect } = global;
-
-describe('Generate GraphQL Entities', () => {
-  fullSampleModel.forEach((entity) => {
-    test(`${entity.shortName} Test`, async () => {
-      if (entity.model) {
-        const schema = await generateGraphQLEntity(entity);
-        expect(schema.indexOf(`${entity.shortName}`)).toBeGreaterThan(1);
-      }
-    });
-  });
-});
 
 describe('Generate GraphQL Schema', () => {
   test('Full sample model', async () => {
     const schema = await generateGraphQLSchema(fullSampleModel);
-    expect(schema.indexOf(`${fullSampleModel[0].shortName}`)).toBeGreaterThan(1);
+    expect(schema.indexOf(`${fullSampleModel[0].entityShortName}`)).toBeGreaterThan(1);
+  });
+});
+
+describe('Make Executable Schema', () => {
+  test('Full sample model', async () => {
+    const typeDefs = await generateGraphQLSchema(fullSampleModel);
+    // await makeExecutableSchema(typeDefs, {});
   });
 });

@@ -1,4 +1,4 @@
-import settings from '../config/settings.json';
+import settings from '../config/settings';
 import { toString, getPrototypeOf, hasOwnProperty } from '../tools/objectUtils';
 
 export function stringifyNativeType(type) {

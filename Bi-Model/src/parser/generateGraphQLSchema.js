@@ -1,58 +1,94 @@
 import { getValue } from './properties';
-import optimizeModel from './optimizeModel';
+import optimizeDataModel from './optimizeDataModel';
 
-async function getGraphQlField(name, field) {
+async function getGraphQlField(name, field, databaseModel, postFix) {
   if (Array.isArray(field.type)) {
-    const value = await getValue('[object String]', field.type[0].graphQLType, null, field);
-    return `  ${name}: [${value}!]${field.required === true ? '!' : ''}`;
+    const value = await getValue(
+      '[object String]',
+      field.type[0].graphQLType,
+      null,
+      field,
+      databaseModel,
+      postFix,
+    );
+    return `  ${name}: [${value}!]${field.required === true && postFix !== 'UpdateInput'
+      ? '!'
+      : ''}`;
   }
-  const value = await getValue('[object String]', field.type.graphQLType, null, field);
+  const value = await getValue(
+    '[object String]',
+    field.type.graphQLType,
+    null,
+    field,
+    databaseModel,
+    postFix,
+  );
   return `  ${name}: ${value}${field.required === true ? '!' : ''}`;
 }
 
-async function getFields(model) {
+async function getFields(model, databaseModel, postFix) {
   const fields = await Promise.all(
-    Object.keys(model).map(name => getGraphQlField(name, model[name])),
+    Object.keys(model).map(name => getGraphQlField(name, model[name], databaseModel, postFix)),
   );
   return fields.filter(value => value);
 }
 
-export async function generateGraphQLEntity(entity) {
+function getEntityType(entity, postFix) {
+  if (entity.isInterface) {
+    return 'interface';
+  }
+  return postFix ? 'input' : 'type';
+}
+
+export async function generateGraphQLDefinition(entity, databaseModel, postFix) {
+  const fields = await getFields(entity.model, databaseModel, postFix);
+  let lines = [];
+  lines.push(
+    `${getEntityType(entity, postFix)} ${entity.entityShortName}${postFix}${!postFix &&
+    entity.composedBy
+      ? ` implements ${entity.composedBy.entityShortName}`
+      : ''} {`,
+  );
+  if (postFix !== 'AddInput') {
+    lines.push('  _id: ID!');
+  }
+  lines = lines.concat(fields);
+  lines.push('}');
+  lines.push('');
+  return lines;
+}
+
+export async function generateGraphQLEntity(entity, databaseModel) {
   let lines = [];
   if (entity.model) {
-    const fields = await getFields(entity.model);
-    lines.push(
-      `${entity.isInterface ? 'interface' : 'type'} ${entity.shortName}${entity.composedBy
-        ? ` implements ${entity.composedBy.shortName}`
-        : ''}`,
-    );
-    lines.push('  _id: ID!');
-    lines = lines.concat(fields);
-    lines.push('}');
-    lines.push('');
+    lines = lines.concat(await generateGraphQLDefinition(entity, databaseModel, ''));
     if (!entity.isInterface) {
-      lines.push(`input ${entity.shortName}AddInput {`);
-      lines = lines.concat(fields);
-      lines.push('}');
-      lines.push('');
-      lines.push(`input ${entity.shortName}Input {`);
-      lines.push('  _id: ID!');
-      lines = lines.concat(fields.map(field => field.replace('!', '')));
-      lines.push('}');
-      lines.push('');
+      lines = lines.concat(await generateGraphQLDefinition(entity, databaseModel, 'AddInput'));
+      lines = lines.concat(await generateGraphQLDefinition(entity, databaseModel, 'UpdateInput'));
     }
   }
   return lines.join('\r\n');
 }
 
-export async function generateGraphQLSchema(model) {
-  let optimizedModel = model;
-  optimizedModel = optimizeModel(optimizedModel);
-  const schema = await Promise.all(
-    optimizedModel.map(async (entity) => {
-      const entitySchema = await generateGraphQLEntity(entity);
-      return entitySchema;
-    }),
+export async function generateGraphQLSchema(databaseModel) {
+  let optimizedDatabaseModel = databaseModel;
+  optimizedDatabaseModel = optimizeDataModel(optimizedDatabaseModel);
+  let schema = ['scalar Date', ''];
+  schema = schema.concat(
+    await Promise.all(
+      optimizedDatabaseModel.map(async (entity) => {
+        const entitySchema = await generateGraphQLEntity(entity, databaseModel);
+        return entitySchema;
+      }),
+    ),
   );
+
+  schema.push('type RootQuery {');
+  schema.push('  me: User');
+  schema.push('}');
+  schema.push('');
+  schema.push('schema {');
+  schema.push('  query: RootQuery');
+  schema.push('}');
   return schema.join('\r\n');
 }

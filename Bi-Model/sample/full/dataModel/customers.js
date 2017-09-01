@@ -5,7 +5,8 @@ import types from '../../../src/fieldTypes';
 import gender from '../../../src/enums/gender';
 
 export default {
-  shortName: 'Customers',
+  collectionShortName: 'Customers',
+  entityShortName: 'Customer',
   singularName: {
     es: 'cliente',
     en: 'customer',
@@ -202,7 +203,7 @@ export default {
     },
     address: {
       type: types.object,
-      shortName: 'Address',
+      entityShortName: 'Address',
       label: {
         es: 'Dirección',
         en: 'Address',

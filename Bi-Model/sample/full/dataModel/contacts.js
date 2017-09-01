@@ -4,7 +4,8 @@ import leads from './leads';
 import customers from './customers';
 
 export default {
-  shortName: 'Contacts',
+  collectionShortName: 'Contacts',
+  entityShortName: 'Contact',
   singularName: {
     es: 'contacto',
     en: 'contact',

@@ -4,34 +4,35 @@ import types from '../../../src/fieldTypes';
 import gender from '../../../src/enums/gender';
 
 export default {
-  shortName: 'Markets',
+  collectionShortName: 'Skills',
+  entityShortName: 'Skill',
   singularName: {
-    es: 'mercado',
-    en: 'market',
+    es: 'skill',
+    en: 'habilidad',
   },
   pluralName: {
-    es: 'mercados',
-    en: 'markets',
+    es: 'skills',
+    en: 'habilidades',
   },
   gender: {
-    es: gender.male,
+    es: gender.female,
   },
   model: {
-    phone: {
-      name: {
+    name: {
+      label: {
         es: 'Nombre',
         en: 'Name',
       },
       type: types.string,
       required: true,
-      getFakedValue: () => faker.lorem.word(),
+      getFakedValue: () => faker.name.jobType(),
     },
   },
   permissions: {
     query: ['all'],
-    update: ['market management'],
-    delete: ['market management'],
-    insert: ['market management', 'sales'],
+    update: ['admin'],
+    delete: ['admin'],
+    insert: ['admin', 'sales'],
   },
   totalFixtures: 100,
 };

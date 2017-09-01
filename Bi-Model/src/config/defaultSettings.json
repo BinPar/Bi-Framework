@@ -1,0 +1,10 @@
+{
+  "defaultLanguage": "es",
+  "PORT": 3004,
+  "mongoURL": "mongodb://localhost/BiFrameWork",
+  "debugMongoose": true,
+  "graphQLPath": "/graphql",
+  "graphiQLPath": "/graphiql",
+  "baseURL": "http://localhost:3004",
+  "secretEncodingKey": "b1nP4rFr4m3w0rkR4l3s"
+}

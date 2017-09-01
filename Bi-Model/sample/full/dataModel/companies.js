@@ -3,7 +3,8 @@ import types from '../../../src/fieldTypes';
 import gender from '../../../src/enums/gender';
 
 export default {
-  shortName: 'Companies',
+  collectionShortName: 'Companies',
+  entityShortName: 'Company',
   singularName: {
     es: 'empresa',
     en: 'company',

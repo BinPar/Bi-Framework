@@ -2,7 +2,9 @@
 import mongoose, { Schema } from 'mongoose';
 
 export default {
-  graphQLType: field => `[${field.targetCollectionShortName}!]`,
+  graphQLType: (field, databaseModel, postFix) =>
+    `[${databaseModel.find(entity => entity.collectionShortName === field.targetCollectionShortName)
+      .entityShortName}${postFix}!]`,
   requiresMongooseModel: true,
   getFakedValue: async field =>
     new Promise((resolve, reject) => {
@@ -19,14 +21,14 @@ export default {
     {
       propName: 'targetCollectionShortName',
       type: String,
-      check: (value, _, model) => model.some(entity => entity.shortName === value),
+      check: (value, _, model) => model.some(entity => entity.collectionShortName === value),
     },
     {
       propName: 'targetCollectionField',
       type: String,
       check: (value, field, model) => {
         const collection = model.find(
-          entity => entity.shortName === field.targetCollectionShortName,
+          entity => entity.collectionShortName === field.targetCollectionShortName,
         );
         if (collection) {
           return !!collection.model[value];

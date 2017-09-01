@@ -3,68 +3,20 @@ import types from '../../../src/fieldTypes';
 import gender from '../../../src/enums/gender';
 
 export default {
-  shortName: 'Leads',
+  collectionShortName: 'Users',
+  entityShortName: 'User',
   singularName: {
-    es: 'prospecto',
-    en: 'lead',
+    es: 'usuario',
+    en: 'user',
   },
   pluralName: {
-    es: 'prospectos',
-    en: 'leads',
+    es: 'usuarios',
+    en: 'users',
   },
   gender: {
     es: gender.male,
   },
   model: {
-    phone: {
-      label: {
-        es: 'Teléfono',
-        en: 'Phone',
-      },
-      type: types.phone,
-    },
-    sexo: {
-      label: {
-        es: 'Sexo',
-        en: 'Sex',
-      },
-      type: types.boolean,
-      optionsValues: [
-        {
-          value: true,
-          label: {
-            en: 'Male',
-            es: 'Masculino',
-          },
-        },
-        {
-          value: false,
-          label: {
-            en: 'Female',
-            es: 'Femenino',
-          },
-        },
-        {
-          value: null,
-          label: '?',
-        },
-      ],
-      required: doc => !doc.lastName || !doc.firstName,
-      indexed: true,
-    },
-    alias: {
-      label: {
-        es: 'Apodo',
-        en: 'Alias',
-      },
-      description: {
-        es: 'Sobrenombre empleado por el contacto',
-      },
-      type: types.firstName,
-      required: doc => !doc.lastName || !doc.firstName,
-      indexed: true,
-      unique: true,
-    },
     firstName: {
       label: {
         es: 'Nombre',
@@ -108,17 +60,6 @@ export default {
       targetCollectionShortName: 'Companies',
       targetCollectionSelect: col => col.find({ isClient: true }),
       denormalized: true,
-    },
-    nationality: {
-      label: {
-        es: 'Nacionalidad',
-        en: 'Nationality',
-      },
-      type: types.oneToManyReference,
-      targetCollectionShortName: 'Countries',
-      denormalized: true,
-      denormalizedFields: ['demonym'],
-      targetCollectionSelect: col => col.sort({ demonym: 1 }),
     },
     updatedAt: {
       // No label so not displayed
