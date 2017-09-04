@@ -13,7 +13,7 @@ describe('Generate GraphQL Schema', () => {
 
 describe('Make Executable Schema', () => {
   test('Full sample model', async () => {
-    const typeDefs = await generateGraphQLSchema(fullSampleModel);
+    await generateGraphQLSchema(fullSampleModel);
     // await makeExecutableSchema(typeDefs, {});
   });
 });

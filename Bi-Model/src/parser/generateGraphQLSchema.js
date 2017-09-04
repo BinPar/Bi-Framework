@@ -2,6 +2,10 @@ import { getValue } from './properties';
 import optimizeDataModel from './optimizeDataModel';
 
 async function getGraphQlField(name, field, databaseModel, postFix) {
+  if (postFix && field.readOnly) {
+    return null;
+  }
+
   if (Array.isArray(field.type)) {
     const value = await getValue(
       '[object String]',
@@ -30,9 +34,6 @@ async function getFields(model, databaseModel, postFix) {
   const fields = await Promise.all(
     Object.keys(model).map(name => getGraphQlField(name, model[name], databaseModel, postFix)),
   );
-  if (postFix) {
-    return fields.filter(value => value && value.readOnly !== true);
-  }
   return fields.filter(value => value);
 }
 
