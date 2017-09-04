@@ -13,16 +13,25 @@ export default {
       required: true,
       indexed: true,
     },
-    country: {
-      label: {
-        es: 'País',
-        en: 'Country',
-      },
-      type: types.oneToManyReference,
-      targetCollectionShortName: 'Countries',
-      denormalized: true,
+    url: {
+      label: 'URL',
+      type: types.url,
       required: true,
-      denormalizedFields: ['name'],
+      indexed: true,
+    },
+    createdAt: {
+      label: 'Created At',
+      type: types.dateTime,
+      maxValue: doc => doc.createdAt || new Date(),
+      readOnly: true,
+      indexed: true,
+    },
+    updatedAt: {
+      label: 'Created At',
+      type: types.dateTime,
+      maxValue: () => new Date(),
+      readOnly: true,
+      indexed: true,
     },
   },
   permissions: {

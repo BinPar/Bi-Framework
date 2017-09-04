@@ -30,6 +30,9 @@ async function getFields(model, databaseModel, postFix) {
   const fields = await Promise.all(
     Object.keys(model).map(name => getGraphQlField(name, model[name], databaseModel, postFix)),
   );
+  if (postFix) {
+    return fields.filter(value => value && value.readOnly !== true);
+  }
   return fields.filter(value => value);
 }
 
@@ -106,9 +109,7 @@ export async function generateGraphQLEntity(entity, databaseModel, rootQuery, ro
     }
 
     if (entity.permissions && entity.permissions.delete) {
-      rootMutation.push(
-        `delete${entity.collectionShortName}(id: ID): ID`,
-      );
+      rootMutation.push(`delete${entity.collectionShortName}(id: ID): ID`);
     }
   }
   return lines.join('\r\n');
