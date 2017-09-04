@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1504547384876" clover="3.2.0">
-  <project timestamp="1504547384876" name="All files">
+<coverage generated="1504547449268" clover="3.2.0">
+  <project timestamp="1504547449268" name="All files">
     <metrics statements="375" coveredstatements="283" conditionals="210" coveredconditionals="146" methods="164" coveredmethods="84" elements="749" coveredelements="513" complexity="0" loc="375" ncloc="375" packages="7" files="50" classes="50">
       <package name="sample.biBooks.dataModel">
         <metrics statements="11" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="11" coveredmethods="0"/>
