@@ -4,7 +4,7 @@ import { generateGraphQLSchema } from '../src/parser/generateGraphQLSchema';
 
 const { describe, test, expect } = global;
 
-describe('Generate GraphQL Schema', () => {
+describe('Generate GraphQL Full Schema', () => {
   test('Full sample model', async () => {
     const schema = await generateGraphQLSchema(fullSampleModel);
     expect(schema.indexOf(`${fullSampleModel[0].entityShortName}`)).toBeGreaterThan(1);
@@ -13,7 +13,10 @@ describe('Generate GraphQL Schema', () => {
 
 describe('Make Executable Schema', () => {
   test('Full sample model', async () => {
-    await generateGraphQLSchema(fullSampleModel);
-    // await makeExecutableSchema(typeDefs, {});
+    const typeDefs = await generateGraphQLSchema(fullSampleModel);
+    makeExecutableSchema({
+      typeDefs,
+      resolvers: {},
+    });
   });
 });

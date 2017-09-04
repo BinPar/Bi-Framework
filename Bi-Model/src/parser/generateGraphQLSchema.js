@@ -1,9 +1,18 @@
+/* eslint-disable no-param-reassign */
 import { getValue } from './properties';
 import optimizeDataModel from './optimizeDataModel';
 
-async function getGraphQlField(name, field, databaseModel, postFix) {
+async function getGraphQlField(name, field, databaseModel, postFix, enums) {
   if (postFix && field.readOnly) {
     return null;
+  }
+
+  if (field.type.isEnum && !postFix) {
+    if (!enums[field.enumName]) enums[field.enumName] = [];
+    const values = enums[field.enumName];
+    enums[field.enumName] = values.concat(
+      field.values.filter(newVal => values.indexOf(newVal) === -1),
+    );
   }
 
   if (Array.isArray(field.type)) {
@@ -30,9 +39,11 @@ async function getGraphQlField(name, field, databaseModel, postFix) {
   return `  ${name}: ${value}${field.required === true ? '!' : ''}`;
 }
 
-async function getFields(model, databaseModel, postFix) {
+async function getFields(model, databaseModel, postFix, enums) {
   const fields = await Promise.all(
-    Object.keys(model).map(name => getGraphQlField(name, model[name], databaseModel, postFix)),
+    Object.keys(model).map(name =>
+      getGraphQlField(name, model[name], databaseModel, postFix, enums),
+    ),
   );
   return fields.filter(value => value);
 }
@@ -49,8 +60,8 @@ function getEntityType(entity, postFix) {
   return postFix ? 'input' : 'type';
 }
 
-export async function generateGraphQLDefinition(entity, databaseModel, postFix) {
-  const fields = await getFields(entity.model, databaseModel, postFix);
+export async function generateGraphQLDefinition(entity, databaseModel, postFix, enums) {
+  const fields = await getFields(entity.model, databaseModel, postFix, enums);
   let lines = [];
   lines.push(
     `${getEntityType(entity, postFix)} ${entity.entityShortName}${postFix}${!postFix &&
@@ -79,10 +90,10 @@ export async function generateSortEnum(entity) {
   return result;
 }
 
-export async function generateGraphQLEntity(entity, databaseModel, rootQuery, rootMutation) {
+export async function generateGraphQLEntity(entity, databaseModel, rootQuery, rootMutation, enums) {
   let lines = [];
   if (entity.model) {
-    lines = lines.concat(await generateGraphQLDefinition(entity, databaseModel, ''));
+    lines = lines.concat(await generateGraphQLDefinition(entity, databaseModel, '', enums));
     if (!entity.isInterface) {
       lines = lines.concat(await generateGraphQLDefinition(entity, databaseModel, 'AddInput'));
       lines = lines.concat(await generateGraphQLDefinition(entity, databaseModel, 'UpdateInput'));
@@ -113,10 +124,12 @@ export async function generateGraphQLEntity(entity, databaseModel, rootQuery, ro
       rootMutation.push(`delete${entity.collectionShortName}(id: ID): ID`);
     }
   }
+
   return lines.join('\r\n');
 }
 
 export async function generateGraphQLSchema(databaseModel) {
+  const enums = {};
   let optimizedDatabaseModel = databaseModel;
   optimizedDatabaseModel = optimizeDataModel(optimizedDatabaseModel);
   let schema = ['scalar Date', ''];
@@ -130,6 +143,7 @@ export async function generateGraphQLSchema(databaseModel) {
           databaseModel,
           rootQuery,
           rootMutation,
+          enums,
         );
         return entitySchema;
       }),
@@ -137,16 +151,26 @@ export async function generateGraphQLSchema(databaseModel) {
   );
 
   schema.push('type RootQuery {');
-  schema = schema.concat(rootQuery);
+  schema = schema.concat(rootQuery.map(line => `  ${line}`));
   schema.push('}');
   schema.push('');
   schema.push('type RootMutation {');
-  schema = schema.concat(rootMutation);
+  schema = schema.concat(rootMutation.map(line => `  ${line}`));
   schema.push('}');
   schema.push('');
   schema.push('schema {');
   schema.push('  query: RootQuery');
   schema.push('  mutation: RootMutation');
   schema.push('}');
+
+  Object.keys(enums).forEach((enumName) => {
+    let enumLines = [];
+    enumLines.push(`enum ${enumName} {`);
+    enumLines = enumLines.concat(enums[enumName].map(value => ` ${value}`));
+    enumLines.push('}');
+    enumLines.push('');
+    schema.unshift(enumLines.join('\r\n'));
+  });
+
   return schema.join('\r\n');
 }

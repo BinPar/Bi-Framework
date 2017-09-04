@@ -7,9 +7,26 @@ describe('Faked ', () => {
     const fieldType = fieldTypes[fieldTypeName];
     if (!fieldType.requiresMongooseModel) {
       test(`Get faked value for type ${fieldTypeName}`, async () => {
-        const result = await fieldType.getFakedValue({ targetCollectionShortName: 'Contacts' });
+        const result = await fieldType.getFakedValue({
+          targetCollectionShortName: 'Contacts',
+          values: ['EnumA', 'EnumB'],
+        });
         expect(result !== null).toBe(true);
       });
+
+      if (fieldType.validator) {
+        test(`Validate faked value for type ${fieldTypeName}`, async () => {
+          const result = await fieldType.getFakedValue({
+            targetCollectionShortName: 'Contacts',
+            values: ['EnumA', 'EnumB'],
+          });
+          const isValid = await fieldType.validator(result, {
+            targetCollectionShortName: 'Contacts',
+            values: ['EnumA', 'EnumB'],
+          });
+          expect(isValid).toBe(true);
+        });
+      }
     }
   });
 });
