@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/fieldTypes/index.js</title>
+    <title>Code coverage report for src/parser/getMongooseField.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">src/fieldTypes</a> index.js
+      <a href="../../index.html">All files</a> / <a href="index.html">src/parser</a> getMongooseField.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">91.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>11/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">62.5% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>5/8</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">91.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>11/12</span>
       </div>
     </div>
   </div>
@@ -80,11 +80,26 @@
 35
 36
 37
-38
-39
-40
-41
-42</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+38</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -93,79 +108,52 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import boolean from './boolean';
-import fString from './string';
-import cityName from './cityName';
-import companyName from './companyName';
-import countryName from './countryName';
-import dateTime from './dateTime';
-import email from './email';
-import firstName from './firstName';
-import float from './float';
-import int from './int';
-import image from './image';
-import lastName from './lastName';
-import object from './object';
-import oneToManyReference from './oneToManyReference';
-import manyToOneReference from './manyToOneReference';
-import manyToManyReference from './manyToManyReference';
-import phone from './phone';
-import productName from './productName';
-import NIFCIF from './NIFCIF';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { getValue } from './properties';
 &nbsp;
-export default {
-  boolean,
-  string: fString,
-  cityName,
-  companyName,
-  countryName,
-  dateTime,
-  email,
-  firstName,
-  float,
-  int,
-  image,
-  lastName,
-  object,
-  oneToManyReference,
-  manyToOneReference,
-  manyToManyReference,
-  phone,
-  productName,
-  NIFCIF,
+const EQUIVALENCE_ENTITY_MONGOOSE_PROPS = {
+  required: { propName: 'required', type: Boolean },
+  indexed: { propName: 'index', type: Boolean },
+  unique: { propName: 'unique', type: Boolean },
+  trim: { propName: 'trim', type: Boolean },
+  optionsValues: { propName: 'enum', type: Array },
 };
+&nbsp;
+const getMongooseField = async function getMongooseField(fieldName, field) {
+  const mongooseField = {
+    type: field.type.mongooseFieldType,
+  };
+&nbsp;
+  function processProperty(propertyName) {
+    return (async () =&gt; {
+      const mongooseProperty = EQUIVALENCE_ENTITY_MONGOOSE_PROPS[propertyName];
+      if (mongooseProperty) {
+        mongooseField[mongooseProperty.propName] = await getValue(
+          mongooseProperty.type,
+          field[propertyName],
+          null,
+          {},
+        );
+      }
+    })();
+  }
+  await Promise.all(Object.keys(field).map(processProperty));
+  const stored = !!field.stored &amp;&amp; (<span class="branch-1 cbranch-no" title="branch not covered" >await getValue(Boolean, field.stored, null, {}))</span>;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (field.value &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!stored)</span> {
+<span class="cstat-no" title="statement not covered" >    mongooseField.isVirtual = true;</span>
+  }
+  return mongooseField;
+};
+&nbsp;
+export default getMongooseField;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
