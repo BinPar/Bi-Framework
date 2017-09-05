@@ -193,7 +193,7 @@ export default {
     avatar: {
       label: 'Avatar',
       type: types.image,
-      getFakedValue: () => faker.name.avatar(),
+      getFakedValue: () => faker.image.avatar(),
       permissions: {
         display: (doc, user) => user.can('admin') || doc.createdBy === user._id,
         update: (doc, user) => user.can('admin') || doc.createdBy === user._id,
