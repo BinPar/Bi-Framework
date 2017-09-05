@@ -7,6 +7,9 @@ async function getGraphQlField(name, field, databaseModel, postFix, enums) {
     return null;
   }
 
+  let description = '';
+  if (field.description) description = (`  # ${field.description}\r\n`);
+
   if (field.type.isEnum && !postFix) {
     if (!enums[field.enumName]) enums[field.enumName] = [];
     const values = enums[field.enumName];
@@ -24,10 +27,12 @@ async function getGraphQlField(name, field, databaseModel, postFix, enums) {
       databaseModel,
       postFix,
     );
-    return `  ${name}: [${value}!]${field.required === true && postFix !== 'UpdateInput'
+
+    return `${description}  ${name}: [${value}!]${field.required === true && postFix !== 'UpdateInput'
       ? '!'
       : ''}`;
   }
+
   const value = await getValue(
     '[object String]',
     field.type.graphQLType,
@@ -36,7 +41,8 @@ async function getGraphQlField(name, field, databaseModel, postFix, enums) {
     databaseModel,
     postFix,
   );
-  return `  ${name}: ${value}${field.required === true ? '!' : ''}`;
+
+  return `${description}  ${name}: ${value}${field.required === true ? '!' : ''}`;
 }
 
 async function getFields(model, databaseModel, postFix, enums) {
@@ -93,6 +99,7 @@ export async function generateSortEnum(entity) {
 export async function generateGraphQLEntity(entity, databaseModel, rootQuery, rootMutation, enums) {
   let lines = [];
   if (entity.model) {
+    if (entity.description) lines.push(`# ${entity.description}`);
     lines = lines.concat(await generateGraphQLDefinition(entity, databaseModel, '', enums));
     if (!entity.isInterface) {
       lines = lines.concat(await generateGraphQLDefinition(entity, databaseModel, 'AddInput'));
