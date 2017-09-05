@@ -14,6 +14,7 @@ describe('Generate GraphQL Bi-Books Schema', () => {
 describe('Make Bi-Books Executable Schema', () => {
   test('Full Bi-Books sample model', async () => {
     const typeDefs = await generateGraphQLSchema(biBooksSampleModel);
+    console.log(typeDefs);
     await makeExecutableSchema({ typeDefs, resolvers: {} });
   });
 });
