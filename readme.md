@@ -2,7 +2,7 @@
 
 A full Stack JavaScript code first GraphQL + Apollo + React + Next, opinionated, complexity first web framework.
 
-## Why another Framework?
+## Not just another Framework
 
 We want to have a dramatic improvement of the relation between the time spent in our projects and the result produced.
 
@@ -14,7 +14,7 @@ The *Meteor* approach allowed us to do great thinks, but we need to move on: No 
 
 And at the same time we need to avoid the per project complexity overhead of the Boilerplate and get advantages of the framework runtime model in terms of been able invest to improve the performance and functionalities of the framework and apply it to all of our projects.
 
-## What is going to be the road map?
+## Road Map
 
 We will start with the Bi-Model runtime.
 
