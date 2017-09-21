@@ -1,35 +1,29 @@
-import { getValue } from './properties';
-
 const EQUIVALENCE_ENTITY_MONGOOSE_PROPS = {
-  required: { propName: 'required', type: Boolean },
-  indexed: { propName: 'index', type: Boolean },
-  unique: { propName: 'unique', type: Boolean },
-  trim: { propName: 'trim', type: Boolean },
-  optionsValues: { propName: 'enum', type: Array },
+  required: 'required',
+  indexed: 'index',
+  unique: 'unique',
+  trim: 'trim',
+  optionsValues: 'enum',
 };
 
-const getMongooseField = async function getMongooseField(fieldName, field) {
+const getMongooseField = function getMongooseField(fieldName, field) {
   const mongooseField = {
     type: field.type.mongooseFieldType,
+    mongooseAdditionalOptions: { },
   };
 
-  function processProperty(propertyName) {
-    return (async () => {
-      const mongooseProperty = EQUIVALENCE_ENTITY_MONGOOSE_PROPS[propertyName];
-      if (mongooseProperty) {
-        mongooseField[mongooseProperty.propName] = await getValue(
-          mongooseProperty.type,
-          field[propertyName],
-          null,
-          {},
-        );
-      }
-    })();
+  const properties = Object.keys(field);
+  for (let i = 0, l = properties.length; i < l; i += 1) {
+    const propertyName = properties[i];
+    const property = field[propertyName];
+    const mongooseProperty = EQUIVALENCE_ENTITY_MONGOOSE_PROPS[propertyName];
+    if (mongooseProperty) {
+      mongooseField[mongooseProperty] = property;
+    }
   }
-  await Promise.all(Object.keys(field).map(processProperty));
-  const stored = !!field.stored && (await getValue(Boolean, field.stored, null, {}));
-  if (field.value && !stored) {
-    mongooseField.isVirtual = true;
+
+  if (field.value && !field.stored) {
+    mongooseField.mongooseAdditionalOptions.isVirtual = true;
   }
   return mongooseField;
 };

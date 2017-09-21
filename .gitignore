@@ -63,4 +63,6 @@ typings/
 # Compiled files
 .compiled/
 
-coverage
+# Coverages
+coverage/
+.coverage/

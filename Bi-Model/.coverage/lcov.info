@@ -1,5 +1,5 @@
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/biBooks/dataModel/additionalMaterials.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/biBooks/dataModel/additionalMaterials.js
 FN:30,(anonymous_0)
 FN:37,(anonymous_1)
 FN:57,(anonymous_2)
@@ -22,7 +22,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/biBooks/dataModel/authors.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/biBooks/dataModel/authors.js
 FN:42,(anonymous_0)
 FN:65,(anonymous_1)
 FNF:2
@@ -39,7 +39,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/biBooks/dataModel/books.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/biBooks/dataModel/books.js
 FN:57,(anonymous_0)
 FN:68,(anonymous_1)
 FN:75,(anonymous_2)
@@ -65,7 +65,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/biBooks/dataModel/index.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/biBooks/dataModel/index.js
 FNF:0
 FNH:0
 LF:0
@@ -74,7 +74,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/biBooks/dataModel/topics.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/biBooks/dataModel/topics.js
 FNF:0
 FNH:0
 LF:0
@@ -83,7 +83,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/full/dataModel/cities.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/full/dataModel/cities.js
 FNF:0
 FNH:0
 LF:0
@@ -92,7 +92,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/full/dataModel/companies.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/full/dataModel/companies.js
 FN:42,(anonymous_0)
 FN:46,(anonymous_1)
 FN:52,(anonymous_2)
@@ -114,7 +114,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/full/dataModel/contacts.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/full/dataModel/contacts.js
 FN:25,(anonymous_0)
 FNF:1
 FNH:0
@@ -128,7 +128,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/full/dataModel/countries.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/full/dataModel/countries.js
 FN:37,(anonymous_0)
 FNF:1
 FNH:1
@@ -140,7 +140,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/full/dataModel/customers.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/full/dataModel/customers.js
 FN:35,(anonymous_0)
 FN:44,(anonymous_1)
 FN:54,(anonymous_2)
@@ -233,7 +233,7 @@ BRF:18
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/full/dataModel/index.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/full/dataModel/index.js
 FNF:0
 FNH:0
 LF:0
@@ -242,7 +242,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/full/dataModel/leads.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/full/dataModel/leads.js
 FN:53,(anonymous_0)
 FN:65,(anonymous_1)
 FN:75,(anonymous_2)
@@ -294,7 +294,7 @@ BRF:10
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/full/dataModel/markets.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/full/dataModel/markets.js
 FN:29,(anonymous_0)
 FNF:1
 FNH:1
@@ -306,7 +306,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/full/dataModel/skills.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/full/dataModel/skills.js
 FN:29,(anonymous_0)
 FNF:1
 FNH:1
@@ -318,7 +318,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/sample/full/dataModel/users.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/sample/full/dataModel/users.js
 FN:26,(anonymous_0)
 FN:34,(anonymous_1)
 FN:43,(anonymous_2)
@@ -357,7 +357,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/config/settings.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/config/settings.js
 FN:5,(anonymous_0)
 FN:6,(anonymous_1)
 FNF:2
@@ -376,7 +376,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/enums/gender.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/enums/gender.js
 FNF:0
 FNH:0
 LF:0
@@ -385,7 +385,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/NIFCIF.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/NIFCIF.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -397,7 +397,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/boolean.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/boolean.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -409,7 +409,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/cityName.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/cityName.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -421,7 +421,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/companyName.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/companyName.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -433,7 +433,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/countryName.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/countryName.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -445,7 +445,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/dateTime.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/dateTime.js
 FN:9,(anonymous_0)
 FNF:1
 FNH:1
@@ -465,7 +465,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/ean.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/ean.js
 FN:3,(anonymous_0)
 FN:6,(anonymous_1)
 FN:7,(anonymous_2)
@@ -488,7 +488,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/email.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/email.js
 FN:4,(anonymous_0)
 FN:5,(anonymous_1)
 FNF:2
@@ -503,7 +503,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/enum.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/enum.js
 FN:2,(anonymous_0)
 FN:4,(anonymous_1)
 FN:6,(anonymous_2)
@@ -521,7 +521,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/firstName.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/firstName.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -533,7 +533,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/float.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/float.js
 FN:5,(anonymous_0)
 FNF:1
 FNH:1
@@ -555,7 +555,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/image.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/image.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -567,7 +567,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/index.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/index.js
 FNF:0
 FNH:0
 LF:0
@@ -576,7 +576,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/int.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/int.js
 FN:5,(anonymous_0)
 FNF:1
 FNH:1
@@ -598,7 +598,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/lastName.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/lastName.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -610,7 +610,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/manyToManyReference.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/manyToManyReference.js
 FN:5,(anonymous_0)
 FN:6,(anonymous_1)
 FN:9,(anonymous_2)
@@ -656,7 +656,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/manyToOneReference.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/manyToOneReference.js
 FN:5,(anonymous_0)
 FN:6,(anonymous_1)
 FN:9,(anonymous_2)
@@ -702,7 +702,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/markdown.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/markdown.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -714,7 +714,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/object.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/object.js
 FN:2,(anonymous_0)
 FN:3,(anonymous_1)
 FNF:2
@@ -729,7 +729,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/oneToManyReference.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/oneToManyReference.js
 FN:5,(anonymous_0)
 FN:6,(anonymous_1)
 FN:9,(anonymous_2)
@@ -760,7 +760,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/phone.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/phone.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -772,7 +772,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/productName.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/productName.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -784,7 +784,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/string.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/string.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -796,7 +796,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/text.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/text.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -808,7 +808,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/fieldTypes/url.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/fieldTypes/url.js
 FN:8,(anonymous_0)
 FN:12,(anonymous_1)
 FNF:2
@@ -824,7 +824,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/parser/checkField.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/parser/checkField.js
 FN:31,checkField
 FNF:1
 FNH:1
@@ -880,7 +880,7 @@ BRF:18
 BRH:18
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/parser/generateGraphQLSchema.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/parser/generateGraphQLSchema.js
 FN:5,getGraphQlField
 FN:20,(anonymous_1)
 FN:52,getFields
@@ -1074,7 +1074,7 @@ BRF:56
 BRH:52
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/parser/getMongooseField.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/parser/getMongooseField.js
 FN:11,getMongooseField
 FN:16,processProperty
 FN:17,(anonymous_2)
@@ -1109,7 +1109,7 @@ BRF:8
 BRH:5
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/parser/optimizeDataModel.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/parser/optimizeDataModel.js
 FN:3,getEntityFromModel
 FN:4,(anonymous_1)
 FN:7,addEntityAndReferences
@@ -1239,7 +1239,7 @@ BRF:24
 BRH:21
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/parser/properties.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/parser/properties.js
 FN:4,stringifyNativeType
 FN:16,check
 FN:24,(anonymous_2)
@@ -1317,7 +1317,7 @@ BRF:32
 BRH:32
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/parser/validateModel.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/parser/validateModel.js
 FN:3,validateModel
 FNF:1
 FNH:1
@@ -1334,7 +1334,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/tools/isEquivalent.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/tools/isEquivalent.js
 FN:3,isEquivalent
 FNF:1
 FNH:1
@@ -1365,7 +1365,7 @@ BRF:10
 BRH:10
 end_of_record
 TN:
-SF:/Users/ignacioferropicon/Projects/Bi-Framework/Bi-Model/src/tools/objectUtils.js
+SF:/Users/marcosgonzalez/Proyectos/Bi-Framework/Bi-Model/src/tools/objectUtils.js
 FNF:0
 FNH:0
 DA:1,10

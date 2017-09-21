@@ -6,7 +6,7 @@ const { describe, test, expect } = global;
 describe('Generation of mongoose model', () => {
   test('Get mongoose field from entity model', async () => {
     expect(
-      await getMongooseField(
+      getMongooseField(
         'phone',
         fullSampleModel.find(entity => entity.collectionShortName === 'Customers').model.phone,
       ),
@@ -14,13 +14,32 @@ describe('Generation of mongoose model', () => {
       type: String,
     });
     expect(
-      await getMongooseField(
+      getMongooseField(
         'firstContactAt',
         fullSampleModel.find(entity => entity.collectionShortName === 'Customers').model.firstContactAt,
       ),
     ).toMatchObject({
       type: Date,
       index: true,
+    });
+    expect(
+      getMongooseField(
+        'fullName',
+        fullSampleModel.find(entity => entity.collectionShortName === 'Customers').model.fullName,
+      ),
+    ).toMatchObject({
+      type: String,
+    });
+    expect(
+      getMongooseField(
+        'initials',
+        fullSampleModel.find(entity => entity.collectionShortName === 'Customers').model.initials,
+      ),
+    ).toMatchObject({
+      type: String,
+      mongooseAdditionalOptions: {
+        isVirtual: true,
+      },
     });
   });
 });

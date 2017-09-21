@@ -42,7 +42,7 @@ export default function checkField(fieldName, field, collectionShortName) {
       `Property "type" of "${fieldName}" must be a valid BinPar Framework Type which must have a property "requiredProperties" => in "${collectionShortName}"`,
     );
   }
-  for (let j = 0, l2 = properties.length; j < l2; j += 1) {
+  for (let j = 0, l = properties.length; j < l; j += 1) {
     const propertyName = properties[j];
     if (ALLOWED_PROPERTIES.indexOf(propertyName) === -1) {
       throw new Error(
@@ -55,7 +55,7 @@ export default function checkField(fieldName, field, collectionShortName) {
   }
   const requiredProperties = type.requiredProperties;
   // check required propName
-  for (let j = 0, l2 = requiredProperties.length; j < l2; j += 1) {
+  for (let j = 0, l = requiredProperties.length; j < l; j += 1) {
     const requiredProperty = requiredProperties[j];
     if (properties.indexOf(requiredProperty.propName) === -1) {
       throw new Error(

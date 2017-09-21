@@ -123,6 +123,14 @@ export default {
       value: doc => doc.alias || `${doc.fistName} ${doc.lastName}`.trim(),
       stored: true,
     },
+    initials: {
+      label: {
+        es: 'Nombre Completo',
+        en: 'Full Name',
+      },
+      type: types.string,
+      value: doc => `${doc.fistName[0].toUpperCase()}${doc.lastName.split(' ').map(str => str[0].toUpperCase()).join('')}`.trim(),
+    },
     email: {
       label: {
         es: 'Correo Electrónico',
