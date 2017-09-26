@@ -1,3 +1,4 @@
+import { check } from '../parser/properties';
 import boolean from './boolean';
 import fString from './string';
 import cityName from './cityName';
@@ -47,5 +48,31 @@ export default {
   productName,
   NIFCIF,
   text,
-  url
+  url,
 };
+
+export function isValidBinParType(typeParam) {
+  const isArray = check('[object Array]', typeParam);
+  const type = isArray ? typeParam[0] : typeParam;
+  if (!type) {
+    throw new Error('The type cannot be undefined/null');
+  }
+  if (!type.mongooseFieldType) {
+    throw new Error('The type is not a valid BinParType');
+  }
+  return {
+    ok: true,
+    isArray,
+    type,
+  };
+}
+
+export function isReference(typeParam) {
+  const { type } = isValidBinParType(typeParam);
+  return type === oneToManyReference || type === manyToManyReference || type === manyToOneReference;
+}
+
+export function getMongooseType(binparType) {
+  const { isArray, type } = isValidBinParType(binparType);
+  return isArray ? [type.mongooseFieldType] : type.mongooseFieldType;
+}

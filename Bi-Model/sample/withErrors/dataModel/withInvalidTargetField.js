@@ -1,21 +1,19 @@
-/* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
-import faker from 'faker';
 import types from '../../../src/fieldTypes';
 import gender from '../../../src/enums/gender';
 
 export default {
-  collectionShortName: 'Skills',
-  entityShortName: 'Skill',
+  collectionShortName: 'withInvalidTargetField',
+  entityShortName: 'WithInvalidTargetField',
   singularName: {
-    es: 'skill',
-    en: 'habilidad',
+    es: 'invalidTarget',
+    en: 'invalidTarget',
   },
   pluralName: {
-    es: 'skills',
-    en: 'habilidades',
+    es: 'invalidTarget',
+    en: 'invalidTarget',
   },
   gender: {
-    es: gender.female,
+    es: gender.male,
   },
   model: {
     name: {
@@ -24,18 +22,19 @@ export default {
         en: 'Name',
       },
       type: types.string,
-      indexed: true,
       required: true,
-      getFakedValue: () => faker.name.jobType(),
+      indexed: true,
     },
-    type: {
+    country: {
       label: {
-        es: 'Tipo',
-        en: 'Type',
+        es: 'País',
+        en: 'Country',
       },
-      type: types.string,
-      indexed: true,
+      type: types.oneToManyReference,
+      targetCollectionShortName: 'Countries',
+      denormalized: true,
       required: true,
+      denormalizedFields: ['invalidTarget'],
     },
   },
   permissions: {
