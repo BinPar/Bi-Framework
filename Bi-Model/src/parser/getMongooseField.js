@@ -49,7 +49,7 @@ export function addDenormalizedReferences(optimizedDatabaseModel, field) {
   return mongooseField;
 }
 
-export default function getMongooseField(optimizedDatabaseModel, fieldName, field, isInnerModel) {
+export default function getMongooseField(optimizedDatabaseModel, fieldName, field) {
   let mongooseField = {};
   if (field.type === BinParTypes.object) {
     try {
@@ -78,8 +78,9 @@ export default function getMongooseField(optimizedDatabaseModel, fieldName, fiel
     }
   }
 
-  if (!isInnerModel && field.value && !field.stored) {
+  if (field.value && !field.stored) {
     mongooseField.isVirtual = true;
+    mongooseField.value = field.value;
   }
 
   return mongooseField;

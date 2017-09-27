@@ -129,7 +129,7 @@ export default {
         en: 'Full Name',
       },
       type: types.string,
-      value: doc => `${doc.fistName[0].toUpperCase()}${doc.lastName.split(' ').map(str => str[0].toUpperCase()).join('')}`.trim(),
+      value: doc => `${doc.firstName[0].toUpperCase()}${doc.lastName.split(' ').map(str => str[0].toUpperCase()).join('')}`.trim(),
     },
     email: {
       label: {

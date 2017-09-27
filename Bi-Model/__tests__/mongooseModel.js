@@ -260,7 +260,8 @@ describe('Generation of mongoose model', () => {
   // Generate mongoose model
   test('Generate mongoose model', () => {
     const DB = generateMongooseModel(fullSampleModel);
-    DB.forEach((mongooseModel) => {
+    Object.keys(DB).forEach((k) => {
+      const mongooseModel = DB[k];
       const processedEntity = processEntity(
         optimizedDatabaseModel,
         optimizedDatabaseModel.find(
@@ -274,5 +275,11 @@ describe('Generation of mongoose model', () => {
         expect(mongooseModel.schema.virtuals[vKey]).toBeDefined();
       });
     });
+    const customer = new DB.Customer({
+      firstName: 'Marcos',
+      lastName: 'González',
+    });
+    expect(customer.firstName).toBe('Marcos');
+    expect(customer.initials).toBe('MG');
   });
 });

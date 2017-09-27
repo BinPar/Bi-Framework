@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-import { hasOwnProperty } from '../tools/objectUtils';
 import getMongooseField from './getMongooseField';
 import optimizeDataModel from './optimizeDataModel';
 
@@ -48,17 +47,17 @@ function addVirtualFieldsToSchema(virtualFields, schema) {
 export default function generateMongooseModel(databaseModel) {
   let optimizedDatabaseModel = databaseModel;
   optimizedDatabaseModel = optimizeDataModel(optimizedDatabaseModel);
-  const DB = [];
+  const DB = {};
   for (let i = 0; i < optimizedDatabaseModel.length; i += 1) {
     const entity = optimizedDatabaseModel[i];
     if (entity.collectionShortName) {
       const { baseSchemaObject, virtualFields } = processEntity(optimizedDatabaseModel, entity);
       const mongooseSchema = new Schema(baseSchemaObject);
       addVirtualFieldsToSchema(virtualFields, mongooseSchema);
-      DB.push(mongoose.model(
+      DB[entity.entityShortName] = mongoose.model(
         `${entity.collectionShortName[0].toLowerCase()}${entity.collectionShortName.substr(1)}`,
         mongooseSchema,
-      ));
+      );
     }
   }
   return DB;
