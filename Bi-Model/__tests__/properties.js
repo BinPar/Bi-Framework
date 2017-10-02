@@ -1,4 +1,4 @@
-import { stringifyNativeType, check, getValue } from '../src/parser/properties';
+import { stringifyNativeType, check } from '../src/parser/properties';
 
 const { describe, test, expect } = global;
 
