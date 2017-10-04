@@ -260,22 +260,19 @@ describe('Generation of mongoose model', () => {
   // Generate mongoose model
   test('Generate mongoose model', () => {
     const DB = generateMongooseModel(fullSampleModel);
-    Object.keys(DB).forEach((k) => {
-      const mongooseModel = DB[k];
+    DB.forEach((obj) => {
+      const { model, entity } = obj;
       const processedEntity = processEntity(
         optimizedDatabaseModel,
-        optimizedDatabaseModel.find(
-          entity =>
-            entity.collectionShortName &&
-            entity.collectionShortName.toLowerCase() === mongooseModel.modelName.toLowerCase(),
-        ),
+        entity,
       );
-      expect(mongooseModel.schema.obj).toMatchObject(processedEntity.baseSchemaObject);
+      expect(model.schema.obj).toMatchObject(processedEntity.baseSchemaObject);
       Object.keys(processedEntity.virtualFields).forEach((vKey) => {
-        expect(mongooseModel.schema.virtuals[vKey]).toBeDefined();
+        expect(model.schema.virtuals[vKey]).toBeDefined();
       });
     });
-    const customer = new DB.Customer({
+    const Customer = DB.find(e => e.entity.collectionShortName === 'Customers').model;
+    const customer = new Customer({
       firstName: 'Marcos',
       lastName: 'González',
     });
