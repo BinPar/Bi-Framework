@@ -1,5 +1,8 @@
 /* eslint new-cap: ["error", { "newIsCap": false }] */
 /* eslint class-methods-use-this: ["off"] */
+/* eslint no-empty-function: ["off"] */
+import { check } from '../parser/properties';
+
 const privatePropertiesMap = new WeakMap();
 
 export default ({ entity, model }) => {
@@ -16,6 +19,68 @@ export default ({ entity, model }) => {
     }
     static createFixtures() {}
     static deleteFixtures() {}
+    /*
+      return plain objects
+    */
+    static async aggregate(pipeline) {
+      return model.aggregate(pipeline);
+    }
+    static async create(docs) {
+      const ensuredArray = check(Array, docs) ? docs : [docs];
+      const promises = [];
+      const res = [];
+      for (let i = 0, l = ensuredArray.length; i < l; i += 1) {
+        const doc = ensuredArray[i];
+        if (doc instanceof this) {
+          promises.push(doc.save());
+          res.push(doc);
+        } else {
+          const bpDoc = new this(doc);
+          promises.push(bpDoc.save());
+          res.push(bpDoc);
+        }
+      }
+      await Promise.all(promises);
+      return res;
+    }
+    static async count(filter) {
+      return new Promise((resolve, reject) => {
+        model.count(filter, (err, count) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(count);
+          }
+        });
+      });
+    }
+    static async deleteMany(filter) {
+      return new Promise((resolve, reject) => {
+        model.deleteMany(filter, (err, count) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(count);
+          }
+        });
+      });
+    }
+    static async deleteOne() {}
+    static async find() {}
+    static async findById() {}
+    static async findByIdAndRemove() {}
+    static async findByIdAndUpdate() {}
+    static async findOne() {}
+    static async findOneAndRemove() {}
+    static async findOneAndUpdate() {}
+    static async geoNear() {}
+    static async geoSearch() {}
+    static async insertMany() {}
+    static async populate() {}
+    static async remove() {}
+    static async update() {}
+    static async updateOne() {}
+    static async updateMany() {}
 
     constructor(doc, user) {
       const hooks = entity.hooks || {};
@@ -30,6 +95,7 @@ export default ({ entity, model }) => {
         onAfterDelete: hooks.onAfterDelete,
         onSelect: hooks.onSelect,
         dirty: false,
+        isNew: true,
       };
       privatePropertiesMap.set(this, privateProperties);
     }
@@ -48,7 +114,6 @@ export default ({ entity, model }) => {
     canDelete() {}
     validate() {}
     save() {}
-    update() {}
     remove() {}
   };
 

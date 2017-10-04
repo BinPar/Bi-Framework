@@ -2,10 +2,8 @@ import validateModel from '../src/parser/validateModel';
 import checkField from '../src/parser/checkField';
 import types from '../src/fieldTypes';
 import customers from '../sample/full/dataModel/customers';
-import sampleWithErrors from '../sample/withErrors/dataModel';
 
 const { describe, test, expect } = global;
-const entityWithDuplicates = sampleWithErrors.find(e => e.collectionShortName === 'withDuplicateFields');
 
 describe('Validate model verification', () => {
   test('Basic fields', () => {
