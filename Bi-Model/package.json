@@ -14,7 +14,7 @@
     "openTestCoverageReport": "jest --coverage; open ./.coverage/lcov-report/index.html",
     "openTestCoverageReportDev": "open ./.coverage/lcov-report/index.html;jest --watch --coverage",
     "eslint": "eslint ./src",
-    "soFarSoGood": "npm run eslint && npm test",
+    "soFarSoGood": "bash ./soFarSoGood.sh",
     "precommit": "npm run soFarSoGood",
     "prepush": "npm run soFarSoGood"
   },
