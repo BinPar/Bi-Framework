@@ -42,10 +42,12 @@
     "graphql": "^0.10.5",
     "graphql-date": "^1.0.3",
     "graphql-tools": "^1.1.0",
+    "immutable": "^3.8.2",
     "jsonwebtoken": "^7.4.3",
     "moment": "^2.18.1",
     "mongoose": "^4.11.7",
     "mongoose-simple-random": "^0.4.1",
+    "ramda": "^0.24.1",
     "validator": "^8.0.0"
   },
   "devDependencies": {

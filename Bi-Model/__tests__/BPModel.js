@@ -22,7 +22,7 @@ describe('BPModel instance create/update performance', () => {
       }));
     }
     const finalTime = new Date().getTime() - startTime;
-    expect(finalTime).toBeLessThan(1300);
+    expect(finalTime).toBeLessThan(1600);
     // console.log(`Time (ms): ${finalTime}`);
   });
   test('Modification performance', () => {
@@ -33,7 +33,7 @@ describe('BPModel instance create/update performance', () => {
       customer.lastName = 'Martínez';
     }
     const finalTime = new Date().getTime() - startTime;
-    expect(finalTime).toBeLessThan(110);
+    expect(finalTime).toBeLessThan(200);
     // console.log(`Time (ms): ${finalTime}`);
   });
 });
